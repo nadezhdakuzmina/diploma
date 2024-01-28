@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "paths": {
+      "@constants": ["src/constants.ts"],
+      "@entities/*": ["src/entities/*"],
+      "@views": ["src/views"],
+      "@utils/*": ["src/utils/*"],
+      "@types": ["src/types.ts"],
+      "@root/*": ["src/*"]
+    },
+    "typeRoots": ["declare.d.ts"]
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

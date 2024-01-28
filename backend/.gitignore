@@ -1,0 +1,6 @@
+node_modules/
+.adminjs
+.postgres/*
+!.postgres/.gitkeep
+.env.*
+!.env.example
