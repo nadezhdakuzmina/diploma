@@ -1,0 +1,18 @@
+.root {
+  font: Verdana;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .root {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  .root {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
