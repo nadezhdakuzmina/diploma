@@ -70,28 +70,12 @@
   font-weight: 500;
 }
 
-.root .searchBar {
+.searchBar {
   margin-top: 20px;
-  --chakra-colors-chakra-placeholder-color: var(--chakra-colors-gray-500);
-  color: #333;
 }
 
 .minimalRoot .searchBar {
   margin-top: 0;
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-}
-
-.searchBar .inputLeft {
-  height: 64px;
-}
-
-.searchBar .input {
-  height: 64px;
-  background-color: #fff;
 }
 
 .tabs {
