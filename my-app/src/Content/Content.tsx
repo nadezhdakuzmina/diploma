@@ -9,7 +9,7 @@ import Servises from '../Servises/Servises';
 
 const Content: FC = () => (
     <Tabs align='center' variant='enclosed' marginTop="-122px" color="white">
-      <Box bg='white' width="420px" height="60px" borderRadius="8px" marginBottom="20px">
+      <Box bg='white' width="420px" height="60px" marginBottom="20px">
         <Select placeholder='Страна' width="400px" paddingTop="10px"
           bg='#F0F2F3'
           borderColor='white'
@@ -20,7 +20,7 @@ const Content: FC = () => (
           <option value='option3'>Нидерланды</option>
         </Select>
       </Box>
-      <TabList borderRadius="8px">
+      <TabList >
         <Tab _selected={{ color: 'white', bg: 'blue.500' }} >City</Tab>
         <Tab _selected={{ color: 'white', bg: 'blue.500' }} >Lifehacks</Tab>
         <Tab _selected={{ color: 'white', bg: 'blue.500' }} >Servises</Tab>

@@ -1,0 +1,114 @@
+.root {
+  position: relative;
+  background-color: #1DA1F2;
+  z-index: 1;
+}
+
+.root::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #e2e8f07f;
+  z-index: -1;
+}
+
+.top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 20px;
+  margin: auto;
+  max-width: 900px;
+}
+
+.minimalRoot .content {
+  flex-direction: row;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.slogan {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  color: #fff;
+}
+
+.minimalRoot .slogan {
+  margin-right: 24px;
+}
+
+.slogan {
+  font: Verdana;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.minimalRoot .title {
+  font-size: 30px;
+  line-height: 34px;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.minimalRoot .description {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.root .searchBar {
+  margin-top: 20px;
+  --chakra-colors-chakra-placeholder-color: var(--chakra-colors-gray-500);
+  color: #333;
+}
+
+.minimalRoot .searchBar {
+  margin-top: 0;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.searchBar .inputLeft {
+  height: 64px;
+}
+
+.searchBar .input {
+  height: 64px;
+  background-color: #fff;
+}
+
+.tabs {
+  margin: auto;
+  margin-bottom: -1px;
+}
+
+@media (max-width: 900px) {
+  .root {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  .root {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

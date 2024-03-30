@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  width: fit-content;
+}
+
+.tab {
+  border-radius: 10px 10px 0 0;
+  padding: 8px 10px;
+  background-color: transparent;
+  transition-duration: 0.1s;
+  color: #fff;
+  cursor: pointer;
+}
+
+.activeTab {
+  background-color: #3182ce;
+}
