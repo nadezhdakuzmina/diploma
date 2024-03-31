@@ -9,6 +9,7 @@ import {
 import { FaSearch } from 'react-icons/fa';
 
 import S from './styles.module.css';
+import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 type Suggest = {
   value: string;
@@ -26,6 +27,10 @@ type SearchBarProps = {
 const SearchBar: React.FC<SearchBarProps> = (props) => {
   const [suggests, setSuggests] = React.useState<Suggest[] | null>(null);
   const [inputValue, setInputValue] = React.useState('');
+
+  const rootRef = useOutsideClick<HTMLDivElement>(() => {
+    setSuggests(null);
+  });
 
   const handleInput = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     const { value } = event.target;
@@ -84,7 +89,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   );
 
   return (
-    <div className={cn(S.root, props.className)}>
+    <div ref={rootRef} className={cn(S.root, props.className)}>
       <InputGroup className={S.searchBar}>
         <InputLeftElement className={S.inputLeft}>
           <FaSearch className={S.icon} />

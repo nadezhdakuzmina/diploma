@@ -2,10 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import ThemeSwitcher from '../ThemeSwitcher';
-
-import S from './styles.module.css';
 import Tabs from '../Tabs';
 import SearchBar from '../SearchBar';
+import ContentWrapper from '../ContentWrapper';
+
+import S from './styles.module.css';
 
 type HeaderProps = {
   minimal?: boolean;
@@ -18,7 +19,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         <ThemeSwitcher />
         {/* <Avatar bg='teal.111' size='md' justifySelf="flex-end" /> */}
       </div>
-      <div className={S.content}>
+      <ContentWrapper className={S.content}>
         <div className={S.slogan}>
           <span className={S.title} >Твой путеводитель</span>
           <span className={S.description} >Опыт тысячи туристов в одном месте</span>
@@ -55,11 +56,8 @@ const Header: React.FC<HeaderProps> = (props) => {
           ])}
           placeholder="Куда отправимся?"
         />
-      </div>
-      <Tabs
-        className={S.tabs}
-        tabs={['Города', 'Лайфхаки', 'Сервисы']}
-      />
+      </ContentWrapper>
+      <Tabs className={S.tabs} />
     </div>
   )
 };

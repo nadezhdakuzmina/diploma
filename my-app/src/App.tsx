@@ -1,15 +1,16 @@
-import * as React from "react"
+import * as React from 'react'
 import {
-  ChakraProvider,
-  VStack,
+  ChakraProvider,/* 
+  VStack, */
   theme,
-} from "@chakra-ui/react"
-import Header from "./components/Header";
-import Content from "./Content/Content";
+} from '@chakra-ui/react'
 
-export const App = () => (
+import Router from './routing/Router';
+
+export const App: React.FC = () => (
   <ChakraProvider theme={theme}>
-    <Header />
+    <Router />
+    {/* <Header /> */}
     {/* <VStack spacing={8}>
       <Content/>
     </VStack> */}
