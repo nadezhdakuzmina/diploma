@@ -6,11 +6,16 @@ import S from './styles.module.css';
 type ContentWrapperProps = {
   children?: React.ReactNode;
   className?: string;
+  heightFit?: boolean;
 }
 
 const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
+  const rootCn = cn(S.root, {
+    [S.heightFit]: props.heightFit,
+  }, props.className);
+
   return (
-    <div className={cn(S.root, props.className)}>
+    <div className={rootCn}>
       {props.children}
     </div>
   );

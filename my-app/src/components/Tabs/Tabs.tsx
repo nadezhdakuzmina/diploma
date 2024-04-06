@@ -13,7 +13,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
   const context = React.useContext(Context);
 
   if (!context) {
-    throw new Error('Tabs should must be used inside Tabs.Privider');
+    return null;
   }
 
   const onChangeTab = (tab: string) => {

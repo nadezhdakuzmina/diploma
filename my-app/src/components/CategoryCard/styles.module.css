@@ -1,0 +1,54 @@
+.root {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+
+  padding: 8px;
+  background-color: var(--chakra-colors-gray-100);
+  border-radius: 14px;
+
+  border: 2px solid #1DA1F2;
+  box-shadow: 0 0 8px -6px #333;
+
+  pointer-events: all;
+  cursor: pointer;
+  transition-duration: .15s;
+}
+
+.activeRoot {
+  background-color: #1DA1F2;
+  color: #fff;
+}
+
+.imgWrap {
+  padding: 12px;
+  border-radius: 14px;
+  background-color: rgba(12,115,254,0.1);
+}
+
+.activeRoot .imgWrap {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.imgWrap img {
+  width: 24px;
+  height: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 12px;
+}
+
+.title {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 17px;
+}
