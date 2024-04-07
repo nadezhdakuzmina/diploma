@@ -9,7 +9,7 @@ import { BsThreeDotsVertical, BsReply } from "react-icons/bs";
 import S from './styles.module.css';
 
 const PostCard: FC = () => (
-  <Card maxW='md' className={S.root}>
+  <Card className={S.root}>
   <CardHeader>
     <Flex >
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -35,11 +35,11 @@ const PostCard: FC = () => (
       create a screen.
     </Text>
   </CardBody>
-  <Image
+  {/* <Image
     objectFit='cover'
     src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
     alt='Chakra UI'
-  />
+  /> */}
 
   <CardFooter
     justify='space-between'

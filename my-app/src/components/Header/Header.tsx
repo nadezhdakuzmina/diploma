@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { Link, useNavigate } from 'react-router-dom';
 
 import ThemeSwitcher from '../ThemeSwitcher';
 import Tabs from '../Tabs';
@@ -13,6 +14,8 @@ type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
+  const navigator = useNavigate();
+
   return (
     <div className={cn(S.root, { [S.minimalRoot]: props.minimal })}>
       <div className={S.top}>
@@ -20,12 +23,15 @@ const Header: React.FC<HeaderProps> = (props) => {
         {/* <Avatar bg='teal.111' size='md' justifySelf="flex-end" /> */}
       </div>
       <ContentWrapper className={S.content}>
-        <div className={S.slogan}>
-          <span className={S.title} >Твой путеводитель</span>
-          <span className={S.description} >Опыт тысячи туристов в одном месте</span>
-        </div>
+        <Link to="/" className={S.slogan}>
+            <span className={S.title}>Твой путеводитель</span>
+            <span className={S.description} >Опыт тысячи туристов в одном месте</span>
+        </Link>
         <SearchBar
           className={S.searchBar}
+          onEnter={(_, searchId) => {
+            navigator(searchId === '1' ? '/country/turkey' : '/country/turkey/city/instanbul')
+          }}
           searchEngine={() => Promise.resolve([
             {
               value: 'Турция',

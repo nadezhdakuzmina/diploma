@@ -3,6 +3,10 @@
   text-align: left;
 }
 
+.root + .root {
+  margin-top: 24px;
+}
+
 @media (max-width: 900px) {
   .root {
     font-size: 24px;

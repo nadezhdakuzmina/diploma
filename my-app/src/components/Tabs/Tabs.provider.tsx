@@ -21,7 +21,7 @@ const TabsProvider: React.FC<TabsProviderProps> = (props) => {
 
   React.useEffect(() => {
     const popStateHandler = () => {
-      const tabId = window.location.hash.slice(1);
+      const tabId = getDefaultTabId(props.tabs, window.location.hash);
       setActiveTabId(tabId);
     };
 

@@ -4,7 +4,7 @@ import EntityCard from '../EntityCard';
 
 import S from './styles.module.css';
 
-type CityCardProps = {
+type PlaceCardProps = {
   className?: string;
   src: string;
   name: string;
@@ -13,7 +13,7 @@ type CityCardProps = {
   link?: string;
 };
 
-const CityCard: React.FC<CityCardProps> = (props) => {
+const PlaceCard: React.FC<PlaceCardProps> = (props) => {
   return (
     <EntityCard link={props.link} src={props.src} className={props.className}>
       <div className={S.top}>
@@ -36,4 +36,4 @@ const CityCard: React.FC<CityCardProps> = (props) => {
   );
 };
 
-export default CityCard;
+export default PlaceCard;

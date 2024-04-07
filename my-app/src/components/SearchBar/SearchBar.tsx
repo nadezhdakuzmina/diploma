@@ -10,6 +10,7 @@ import { FaSearch } from 'react-icons/fa';
 
 import S from './styles.module.css';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
+import { Link } from 'react-router-dom';
 
 type Suggest = {
   value: string;
@@ -67,7 +68,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   };
 
   const renderSuggest = (suggest: Suggest) => (
-    <>
+    <div className={S.suggest}>
       <div
         key={suggest.searchId}
         className={S.suggestItem}
@@ -77,7 +78,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
       </div>
       {suggest.subSuggests?.map((subSuggest) => (
         <div
-          key={suggest.searchId}
+          key={subSuggest.searchId}
           className={cn(S.suggestItem, S.suggestSubItem)}
           onClick={createSelectHandler(subSuggest.searchId, subSuggest.value)}
         >
@@ -85,7 +86,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           <span>{`, ${suggest.value}`}</span>
         </div>
       ))}
-    </>
+    </div>
   );
 
   return (
@@ -102,11 +103,11 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           onKeyDownCapture={handleKeyPress}
         />
       </InputGroup>
-      {suggests ? (
-        <div className={S.suggest}>
-          {suggests.map(renderSuggest)}
-        </div>
-      ) : null}
+      {suggests ? suggests.map((suggest) => (
+        <React.Fragment key={suggest.searchId}>
+          {renderSuggest(suggest)}
+        </React.Fragment>
+      )) : null}
     </div>
   );
 };

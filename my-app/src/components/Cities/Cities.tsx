@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import ContentWrapper from '../ContentWrapper';
-import CityCard from '../CityCard';
+import PlaceCard from '../PlaceCard';
 
 import S from './styles.module.css';
 
@@ -10,7 +10,7 @@ const CITIES = [
     id: 1,
     src: 'https://lisa.ru/wp-content/uploads/2018/01/HiRes_ShutterStock_Fotodom.ru_shutterstock_525106075.jpg',
     name: 'Стамбул',
-    tags: ['исторический центр', 'вкусная еда', 'на***вают'],
+    tags: ['исторический центр', 'вкусная еда'],
     references: 1504,
     link: '/country/turkey/city/instanbul',
   },
@@ -53,7 +53,7 @@ const Cities: React.FC = () => {
     <ContentWrapper className={S.root}>
       <div className={S.content}>
         {CITIES.map((item) => (
-          <CityCard
+          <PlaceCard
             key={item.id}
             {...item}
             className={S.card}

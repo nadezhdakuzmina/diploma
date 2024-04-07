@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  color: #aaaaaa;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.crumb:hover {
+  text-decoration: underline;
+}
+
+.crumb + .crumb {
+  margin-left: 6px;
+}
