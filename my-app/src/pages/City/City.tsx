@@ -6,9 +6,10 @@ import { TabsItem, TabsProvider } from '../../components/Tabs';
 
 import CategoricalMap from '../../components/CategoricalMap';
 import PageWrapper from '../../components/PageWrapper';
+import Services from '../../components/Services';
 
 const MAP_TAB_ID = 'map';
-const FEED_TAB_ID = 'feed';
+const THREADS_TAB_ID = 'threads';
 const SERVICES_TAB_ID = 'services';
 
 const PAGE_TABS = [
@@ -17,8 +18,8 @@ const PAGE_TABS = [
     value: 'Карта'
   },
   {
-    id: FEED_TAB_ID,
-    value: 'Лента',
+    id: THREADS_TAB_ID,
+    value: 'Треды',
   },
   {
     id: SERVICES_TAB_ID,
@@ -34,15 +35,13 @@ const City: React.FC = () => {
         <TabsItem id={MAP_TAB_ID}>
           <CategoricalMap />
         </TabsItem>
-        <TabsItem id={FEED_TAB_ID}>
-          <ContentWrapper heightFit>
+        <TabsItem id={THREADS_TAB_ID}>
+          <ContentWrapper>
             Feed
           </ContentWrapper>
         </TabsItem>
         <TabsItem id={SERVICES_TAB_ID}>
-          <ContentWrapper heightFit>
-            Services
-          </ContentWrapper>
+          <Services />
         </TabsItem>
       </TabsProvider>
     </PageWrapper>

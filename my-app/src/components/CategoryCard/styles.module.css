@@ -13,6 +13,7 @@
   pointer-events: all;
   cursor: pointer;
   transition-duration: .15s;
+  color: #333;
 }
 
 .activeRoot {

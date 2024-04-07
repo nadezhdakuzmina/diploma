@@ -19,6 +19,19 @@ const TabsProvider: React.FC<TabsProviderProps> = (props) => {
     window.location.hash = tabId;
   };
 
+  React.useEffect(() => {
+    const popStateHandler = () => {
+      const tabId = window.location.hash.slice(1);
+      setActiveTabId(tabId);
+    };
+
+    window.addEventListener('popstate', popStateHandler);
+
+    return () => {
+      window.removeEventListener('popstate', popStateHandler)
+    };
+  }, []);
+
   const context = React.useMemo(() => ({
     tabs: props.tabs,
     activeTabId,

@@ -79,7 +79,6 @@
 
 .tabs {
   margin: auto;
-  margin-bottom: -1px;
 }
 
 @media (max-width: 900px) {
