@@ -1,9 +1,10 @@
-import * as React from 'react'
+import * as React from 'react';
 import {
   ChakraProvider,/* 
   VStack, */
   theme,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import './styles/variables.css';
 
 import Router from './routing/Router';
 

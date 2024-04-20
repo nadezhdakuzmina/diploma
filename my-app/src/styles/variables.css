@@ -1,0 +1,5 @@
+:root {
+    --gradient: linear-gradient(30deg, rgba(255,78,205,1) 0%, rgba(245,165,36,1) 100%);
+    --orange: rgba(245,165,36,1);
+    --pink: rgb(255,78,205);
+  }

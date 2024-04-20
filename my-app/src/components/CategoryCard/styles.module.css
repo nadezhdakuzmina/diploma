@@ -5,9 +5,11 @@
 
   padding: 8px;
   background-color: var(--chakra-colors-gray-100);
-  border-radius: 14px;
 
-  border: 2px solid #1DA1F2;
+  border-image: var(--gradient) 30;
+  border-radius: 14px;
+  border-width: 2px;
+  border-style: solid;
   box-shadow: 0 0 8px -6px #333;
 
   pointer-events: all;
@@ -17,7 +19,7 @@
 }
 
 .activeRoot {
-  background-color: #1DA1F2;
+  background: var(--gradient);
   color: #fff;
 }
 

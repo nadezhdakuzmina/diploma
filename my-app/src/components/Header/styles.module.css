@@ -1,6 +1,7 @@
 .root {
   position: relative;
-  background-color: #1DA1F2;
+  background: var(--pink);
+  background: var(--gradient);
   z-index: 1;
 }
 

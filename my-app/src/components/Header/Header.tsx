@@ -1,6 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
+import { Icon } from '@chakra-ui/react';
+import { MoonIcon } from '@chakra-ui/icons';
 
 import ThemeSwitcher from '../ThemeSwitcher';
 import Tabs from '../Tabs';
@@ -19,8 +21,10 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <div className={cn(S.root, { [S.minimalRoot]: props.minimal })}>
       <div className={S.top}>
-        <ThemeSwitcher />
-        {/* <Avatar bg='teal.111' size='md' justifySelf="flex-end" /> */}
+        {/* <ThemeSwitcher /> */}
+        <Link to="/registration" >
+          <Icon as={MoonIcon} color='#fff' />
+        </Link>
       </div>
       <ContentWrapper className={S.content}>
         <Link to="/" className={S.slogan}>
