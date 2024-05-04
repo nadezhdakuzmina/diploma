@@ -10,8 +10,20 @@
   transition-duration: 0.1s;
   color: #fff;
   cursor: pointer;
+  transition-duration: .15s;
+
+  --tab-border-color: transparent;
+  border-top: 1px solid var(--tab-border-color);
+  border-left: 1px solid var(--tab-border-color);
+  border-right: 1px solid var(--tab-border-color);
+}
+
+.tab + .tab {
+  margin-left: 1px;
 }
 
 .activeTab {
   background: rgba( 256, 256, 256, 0.15);
+  box-sizing: content-box;
+  --tab-border-color: #fff;
 }
