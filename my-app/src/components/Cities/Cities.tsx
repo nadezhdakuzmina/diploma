@@ -4,6 +4,7 @@ import ContentWrapper from '../ContentWrapper';
 import PlaceCard from '../PlaceCard';
 
 import S from './styles.module.css';
+import Breadcrumbs from '../Breadcrumbs';
 
 const CITIES = [
   {
@@ -51,6 +52,20 @@ const CITIES = [
 const Cities: React.FC = () => {
   return (
     <ContentWrapper className={S.root}>
+      <Breadcrumbs className={S.breadcrumbs} crumbs={[
+        {
+          link: '/',
+          text: 'Главная',
+        },
+        {
+          link: '/country/turkey',
+          text: 'Турция',
+        },
+        {
+          link: '/country/turkey#cities',
+          text: 'Города',
+        },
+      ]} />
       <div className={S.content}>
         {CITIES.map((item) => (
           <PlaceCard

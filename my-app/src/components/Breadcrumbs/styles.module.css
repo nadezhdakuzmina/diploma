@@ -5,10 +5,24 @@
   line-height: 20px;
 }
 
+.spacer,
+.crumb {
+  font-weight: 600;
+}
+
+.crumb {
+  cursor: pointer;
+}
+
 .crumb:hover {
   text-decoration: underline;
 }
 
-.crumb + .crumb {
+.crumb + .spacer,
+.spacer + .crumb {
   margin-left: 6px;
+}
+
+.crumb:last-child {
+  color: #333;
 }

@@ -30,7 +30,7 @@
   top: 0;
   padding-top: 64px;
   background-color: #fff;
-  border-radius: var(--chakra-radii-md);
+  border-radius: 14px;
   width: 100%;
   box-shadow: 0 0px 9px -6px #333;
   overflow: hidden;

@@ -64,7 +64,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               ],
             }
           ])}
-          placeholder="Куда отправимся?"
+          placeholder="Куда отправимся?..."
         />
       </ContentWrapper>
       <Tabs className={S.tabs} />
