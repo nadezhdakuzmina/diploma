@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Heading, Input, Text } from '@chakra-ui/react';
+import { Button, Heading, Input, Text } from '@chakra-ui/react';
 
 import PageWrapper from '../../components/PageWrapper';
 
@@ -8,7 +8,7 @@ import Header from '../../components/Header';
 import { Link } from 'react-router-dom';
 import ContentWrapper from '../../components/ContentWrapper';
 
-const Registration: React.FC = () => {
+const Auth: React.FC = () => {
   return (
     <PageWrapper>
       <ContentWrapper className={S.root}>
@@ -34,22 +34,16 @@ const Registration: React.FC = () => {
             </div>
             <div className={S.inputGroup}>
               <input className={S.input}
-                placeholder='имя'
-              />
-              <input className={S.input}
                 placeholder='почта'
-              />
-              <input className={S.input}
-                placeholder='логин'
               />
               <input className={S.input}
                 placeholder='пароль'
               />
               <div className={S.button}>
-                Зарегистрироваться
+                Войти
               </div>
-              <Link to="/auth" >
-                Уже есть аккаунт
+              <Link to="/registration" >
+                Зарегистрироваться
               </Link>
             </div>
           </div>
@@ -59,4 +53,4 @@ const Registration: React.FC = () => {
   );
 };
 
-export default Registration;
+export default Auth;

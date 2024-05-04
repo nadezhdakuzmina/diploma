@@ -22,8 +22,8 @@ const Header: React.FC<HeaderProps> = (props) => {
     <div className={cn(S.root, { [S.minimalRoot]: props.minimal })}>
       <div className={S.top}>
         {/* <ThemeSwitcher /> */}
-        <Link to="/registration" >
-          <Icon as={MoonIcon} color='#fff' />
+        <Link to="/registration" className={S.enterButton}>
+          Войти
         </Link>
       </div>
       <ContentWrapper className={S.content}>

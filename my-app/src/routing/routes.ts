@@ -4,6 +4,7 @@ import City from '../pages/City';
 import Registration from '../pages/Registration';
 
 import type { RouteObject } from 'react-router-dom';
+import Auth from '../pages/Auth';
 
 export const routes: RouteObject[] = [
   {
@@ -18,6 +19,10 @@ export const routes: RouteObject[] = [
   {
     path: '/registration',
     Component: Registration,
+  },
+  {
+    path: '/auth',
+    Component: Auth,
   },
   {
     path: '/country/:country/city/:city',
