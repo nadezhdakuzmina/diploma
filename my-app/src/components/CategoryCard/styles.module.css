@@ -68,3 +68,20 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+@media (max-width: 900px) {
+  .imgWrap {
+    padding: 6px;
+    border-radius: 7px;
+  }
+
+  .title {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

@@ -52,7 +52,7 @@ const Map: React.FC<MapProps> = (props) => {
     setMap(
       new MBoxMap({
         container: containerElement,
-        style: 'mapbox://styles/mapbox/light-v11', // 'mapbox://styles/mapbox/basic-v9',
+        style: /* 'mapbox://styles/mapbox/light-v11', */ 'mapbox://styles/mapbox/basic-v9',
         center: props.centerPoint,
         zoom: props.zoom || DEFAULT_ZOOM,
         attributionControl: false,

@@ -11,6 +11,7 @@
   border-radius: 14px;
   background-color: #fff;
   padding: 3px;
+  transition-duration: .15s;
 }
 
 .selected .imageWrapper {
@@ -38,6 +39,7 @@
   line-height: 17px;
   font-weight: 600;
   color: #333;
+  transition-duration: .15s;
   text-shadow: -1px -1px 0 hsla(0,0%,100%,0.72),1px -1px 0 hsla(0,0%,100%,0.72),-1px 1px 0 hsla(0,0%,100%,0.72),1px 1px 0 hsla(0,0%,100%,0.72);
 }
 

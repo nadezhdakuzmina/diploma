@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import EntityCard from '../EntityCard';
+import Tags from '../Tags';
 
 import S from './styles.module.css';
 
@@ -17,11 +18,12 @@ const ServiceCard: React.FC<ServiceCardProps> = (props) => {
     <EntityCard src={props.src} className={props.className}>
       <h4 className={S.title}>{props.name}</h4>
       <span className={S.description}>{props.description}</span>
-      <div className={S.tags}>
-        {props.tags?.map((tag) => (
-          <div key={tag} className={S.tag}>#{tag}</div>
-        ))}
-      </div>
+      {props.tags && (
+        <Tags
+          tags={props.tags}
+          className={S.tags}
+        />
+      )}
     </EntityCard>
   );
 };

@@ -2,9 +2,11 @@ import * as React from 'react';
 
 import Map from '../Map';
 import CategoryCard from '../CategoryCard';
+import PointModal from '../PointModal';
+
+import { type PointData } from '../MapPoints';
 
 import S from './styles.module.css';
-import { PointData } from '../MapPoints';
 
 const CATEGORIES = [
   {
@@ -182,6 +184,10 @@ const CategoricalMap: React.FC = () => {
     setActivePoint('');
   }, []);
 
+  const handleModalClose = React.useCallback(() => {
+    setActivePoint('');
+  }, []);
+
   return (
     <div className={S.root}>
       <div className={S.categories}>
@@ -203,6 +209,11 @@ const CategoricalMap: React.FC = () => {
         onSelect={handleOnSelect}
         selectedPoint={activePoint}
       />
+      {activePoint && (
+        <PointModal
+          onClose={handleModalClose}
+        />
+      )}
     </div>
   );
 };
