@@ -3,22 +3,17 @@ import * as React from 'react';
 import Header from '../../components/Header';
 import { TabsItem, TabsProvider } from '../../components/Tabs';
 import Cities from '../../components/Cities';
-import MainInformation from '../../components/MainInformation';
 import PageWrapper from '../../components/PageWrapper';
 import Services from '../../components/Services';
 import ContentWrapper from '../../components/ContentWrapper';
 import PostCard from '../../PostCard';
+import Treads from '../../components/Treads';
 
 const CITIES_TAB_ID = 'cities';
-const COUNTRY_TAB_ID = 'country';
 const THREADS_TAB_ID = 'threads';
 const SERVICES_TAB_ID = 'services';
 
 const PAGE_TABS = [
-  {
-    id: COUNTRY_TAB_ID,
-    value: 'О стране'
-  },
   {
     id: CITIES_TAB_ID,
     value: 'Города'
@@ -38,22 +33,11 @@ const Country: React.FC = () => {
     <PageWrapper>
       <TabsProvider tabs={PAGE_TABS}>
         <Header minimal />
-        <TabsItem id={COUNTRY_TAB_ID}>
-          <MainInformation />
-        </TabsItem>
         <TabsItem id={CITIES_TAB_ID}>
           <Cities />
         </TabsItem>
         <TabsItem id={THREADS_TAB_ID}>
-          <style dangerouslySetInnerHTML={{ __html: '.height100 { height: 100%; padding-top: 24px; padding-bottom: 24px }' }} />
-          <ContentWrapper className="height100">
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-          </ContentWrapper>
+            <Treads />
         </TabsItem>
         <TabsItem id={SERVICES_TAB_ID}>
           <Services />

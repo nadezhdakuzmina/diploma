@@ -8,6 +8,7 @@ import CategoricalMap from '../../components/CategoricalMap';
 import PageWrapper from '../../components/PageWrapper';
 import Services from '../../components/Services';
 import PostCard from '../../PostCard';
+import Treads from '../../components/Treads';
 
 const MAP_TAB_ID = 'map';
 const THREADS_TAB_ID = 'threads';
@@ -37,15 +38,7 @@ const City: React.FC = () => {
           <CategoricalMap />
         </TabsItem>
         <TabsItem id={THREADS_TAB_ID}>
-          <style dangerouslySetInnerHTML={{ __html: '.height100 { height: 100%; padding-top: 24px; padding-bottom: 24px }' }} />
-          <ContentWrapper className="height100">
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-          </ContentWrapper>
+            <Treads />
         </TabsItem>
         <TabsItem id={SERVICES_TAB_ID}>
           <Services />
