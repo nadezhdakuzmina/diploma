@@ -1,0 +1,10 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  background-color: #fff;
+  color: #333;
+  font-weight: 500;
+  border-radius: 40px;
+  padding: 6px 10px;
+  cursor: pointer;
+}

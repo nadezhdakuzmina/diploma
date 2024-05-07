@@ -1,0 +1,10 @@
+.root {
+  color: var(--pink);
+  fill: var(--pink);
+  font-weight: 700;
+}
+
+.icon {
+  width: 20px;
+  margin-left: 3px;
+}

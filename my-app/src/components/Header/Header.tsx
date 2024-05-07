@@ -1,13 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
-import { Icon } from '@chakra-ui/react';
-import { MoonIcon } from '@chakra-ui/icons';
 
-import ThemeSwitcher from '../ThemeSwitcher';
 import Tabs from '../Tabs';
 import SearchBar from '../SearchBar';
 import ContentWrapper from '../ContentWrapper';
+import LoginButton from '../LoginButton';
 
 import S from './styles.module.css';
 
@@ -20,16 +18,13 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   return (
     <div className={cn(S.root, { [S.minimalRoot]: props.minimal })}>
-      <div className={S.top}>
-        {/* <ThemeSwitcher /> */}
-        <Link to="/registration" className={S.enterButton}>
-          Войти
-        </Link>
-      </div>
+      <ContentWrapper className={S.topLine}>
+        <LoginButton />
+      </ContentWrapper>
       <ContentWrapper className={S.content}>
         <Link to="/" className={S.slogan}>
-            <span className={S.title}>Твой путеводитель</span>
-            <span className={S.description} >Опыт тысячи туристов в одном месте</span>
+          <span className={S.title}>Твой путеводитель</span>
+          <span className={S.description} >Опыт тысячи туристов в одном месте</span>
         </Link>
         <SearchBar
           className={S.searchBar}
