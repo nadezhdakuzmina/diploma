@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 
 import S from './styles.module.css';
 
@@ -9,7 +10,7 @@ type TagsProps = {
 
 const Tags: React.FC<TagsProps> = (props) => {
   return (
-    <div className={props.className}>
+    <div className={cn(S.tags, props.className)}>
       {props.tags.map((tag) => (
         <div key={tag} className={S.tag}>#{tag}</div>
       ))}
