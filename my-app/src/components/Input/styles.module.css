@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  padding: 8px 16px;
+  background-color: hsl(240 5.88% 90%/.5);
+  box-shadow:
+    0 0 #0000,
+    0 0 #0000,
+    0 20px 25px -5px rgba(0,0,0,.1),
+    0 8px 10px -6px rgba(0,0,0,.1);
+  transition-duration: .15s;
+  cursor: text;
+  height: 56px;
+}
+
+.root:hover {
+  background-color: hsl(240 5.88% 90%/.7);
+}
+
+.root.active {
+  background-color: #fff;
+}
+
+.icon {
+  color: rgb(148 163 184/1);
+  flex-shrink: 0;
+  pointer-events: none;
+  margin-right: 10px;
+}
+
+.input {
+  outline: none;
+  color: #333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+}

@@ -2,6 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import S from './styles.module.css';
+import { Link } from 'react-router-dom';
 
 type Crumb = {
   text: string;
@@ -21,17 +22,18 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = (props) => {
           {index > 0 ? (
             <span
               key={crumb.text + 'before'}
-              className={S.crumb}
+              className={S.spacer}
             >
-              {'>'}
+              {'/'}
             </span>
           ) : null}
-          <span
+          <Link
+            to={crumb.link}
             key={crumb.text}
             className={S.crumb}
           >
             {crumb.text}
-          </span>
+          </Link>
         </>
       ))}
     </div>

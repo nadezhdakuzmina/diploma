@@ -7,8 +7,7 @@ import { TabsItem, TabsProvider } from '../../components/Tabs';
 import CategoricalMap from '../../components/CategoricalMap';
 import PageWrapper from '../../components/PageWrapper';
 import Services from '../../components/Services';
-import PostCard from '../../PostCard';
-import Treads from '../../components/Treads';
+import Threads from '../../components/Threads';
 
 const MAP_TAB_ID = 'map';
 const THREADS_TAB_ID = 'threads';
@@ -38,7 +37,7 @@ const City: React.FC = () => {
           <CategoricalMap />
         </TabsItem>
         <TabsItem id={THREADS_TAB_ID}>
-            <Treads />
+          <Threads />
         </TabsItem>
         <TabsItem id={SERVICES_TAB_ID}>
           <Services />

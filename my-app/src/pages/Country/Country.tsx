@@ -5,9 +5,7 @@ import { TabsItem, TabsProvider } from '../../components/Tabs';
 import Cities from '../../components/Cities';
 import PageWrapper from '../../components/PageWrapper';
 import Services from '../../components/Services';
-import ContentWrapper from '../../components/ContentWrapper';
-import PostCard from '../../PostCard';
-import Treads from '../../components/Treads';
+import Threads from '../../components/Threads';
 
 const CITIES_TAB_ID = 'cities';
 const THREADS_TAB_ID = 'threads';
@@ -37,7 +35,7 @@ const Country: React.FC = () => {
           <Cities />
         </TabsItem>
         <TabsItem id={THREADS_TAB_ID}>
-            <Treads />
+          <Threads />
         </TabsItem>
         <TabsItem id={SERVICES_TAB_ID}>
           <Services />

@@ -10,8 +10,14 @@
   transition-duration: 0.1s;
   color: #fff;
   cursor: pointer;
+  transition-duration: .15s;
+}
+
+.tab + .tab {
+  margin-left: 1px;
 }
 
 .activeTab {
-  background: rgba( 256, 256, 256, 0.15);
+  background: hsl(240 5.88% 90%/.5);
+  box-sizing: content-box;
 }

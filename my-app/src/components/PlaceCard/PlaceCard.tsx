@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import EntityCard from '../EntityCard';
+import Tags from '../Tags';
 
 import S from './styles.module.css';
 
@@ -27,11 +28,12 @@ const PlaceCard: React.FC<PlaceCardProps> = (props) => {
           </span>
         ) : null}
       </div>
-      <div className={S.tags}>
-        {props.tags?.map((tag) => (
-          <div key={tag} className={S.tag}>#{tag}</div>
-        ))}
-      </div>
+      {props.tags && (
+        <Tags
+          tags={props.tags}
+          className={S.tags}
+        />
+      )}
     </EntityCard>
   );
 };

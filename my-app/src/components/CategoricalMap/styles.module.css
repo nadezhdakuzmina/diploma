@@ -5,6 +5,16 @@
   z-index: 0;
 }
 
+.root::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0 0 80px 25px #999;
+}
+
 .map {
   flex: 1 1 auto;
 }

@@ -1,16 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-import {
-  InputGroup,
-  InputLeftElement,
-  Input,
-} from '@chakra-ui/react';
-import { FaSearch } from 'react-icons/fa';
+import Input from '../Input';
 
 import S from './styles.module.css';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
-import { Link } from 'react-router-dom';
 
 type Suggest = {
   value: string;
@@ -60,13 +54,6 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
     };
   }, []);
 
-  const handleKeyPress: React.KeyboardEventHandler = (event) => {
-    if (event.keyCode === 13) {
-      setSuggests(null);
-      props.onEnter?.(inputValue);
-    }
-  };
-
   const renderSuggest = (suggest: Suggest) => (
     <div className={S.suggest}>
       <div
@@ -91,18 +78,18 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
 
   return (
     <div ref={rootRef} className={cn(S.root, props.className)}>
-      <InputGroup className={S.searchBar}>
-        <InputLeftElement className={S.inputLeft}>
-          <FaSearch className={S.icon} />
-        </InputLeftElement>
-        <Input
-          value={inputValue}
-          onChange={handleInput}
-          className={S.input}
-          placeholder={props.placeholder}
-          onKeyDownCapture={handleKeyPress}
-        />
-      </InputGroup>
+      <Input
+        className={S.searchBar}
+        placeholder={props.placeholder}
+        onChange={handleInput}
+        value={inputValue}
+        icon={
+          <svg aria-hidden="true" fill="none" focusable="false" height="1em" role="presentation" viewBox="0 0 24 24" width="1em">
+            <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            <path d="M22 22L20 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        }
+      />
       {suggests ? suggests.map((suggest) => (
         <React.Fragment key={suggest.searchId}>
           {renderSuggest(suggest)}
