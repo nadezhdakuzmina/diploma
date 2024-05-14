@@ -65,7 +65,7 @@ const CATEGORIES_POINTS: Record<string, PointData[]> = {
       id: '1',
       point: [-70.9, 42.35] as [number, number],
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
-      name: 'Чисто хуйня'
+      name: 'Центральный пляж'
     }, {
       id: 'qf  qwf',
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
@@ -109,7 +109,7 @@ const CATEGORIES_POINTS: Record<string, PointData[]> = {
       id: '1',
       point: [-70.9, 42.35] as [number, number],
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
-      name: 'Чисто хуйня'
+      name: 'Центральный пляж'
     }, {
       id: 'qf  qwf',
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
@@ -122,7 +122,7 @@ const CATEGORIES_POINTS: Record<string, PointData[]> = {
       id: '1',
       point: [-70.9, 42.35] as [number, number],
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
-      name: 'Чисто хуйня'
+      name: 'Центральный пляж'
     }, {
       id: 'qf  qwf',
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
@@ -135,7 +135,7 @@ const CATEGORIES_POINTS: Record<string, PointData[]> = {
       id: '1',
       point: [-70.9, 42.35] as [number, number],
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
-      name: 'Чисто хуйня'
+      name: 'Центральный пляж'
     }, {
       id: 'qf  qwf',
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
@@ -148,7 +148,7 @@ const CATEGORIES_POINTS: Record<string, PointData[]> = {
       id: '1',
       point: [-70.9, 42.35] as [number, number],
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
-      name: 'Чисто хуйня'
+      name: 'Центральный пляж'
     }, {
       id: 'qf  qwf',
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
@@ -161,7 +161,7 @@ const CATEGORIES_POINTS: Record<string, PointData[]> = {
       id: '1',
       point: [-70.9, 42.35] as [number, number],
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',
-      name: 'Чисто хуйня'
+      name: 'Центральный пляж'
     }, {
       id: 'qf  qwf',
       image: 'https://img.avs.io/locals_trap/pois/39e94c6c-0a2e-45bb-8be0-7cbb481917fa?rs=fill:480:480:0&g=ce',

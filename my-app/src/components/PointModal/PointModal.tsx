@@ -4,6 +4,7 @@ import Modal from '../Modal';
 
 import S from './styles.module.css';
 import Tags from '../Tags';
+import Comment from '../Comment';
 
 type PointModalProps = {
   onClose: () => void;
@@ -27,7 +28,12 @@ const PointModal: React.FC<PointModalProps> = (props) => {
         </span>
       </div>
       <div className={S.comments}>
-
+        <h2 className={S.title}>Комментарии</h2>
+        <div className={S.list}>
+          <Comment />
+          <Comment />
+          <Comment />
+        </div>
       </div>
     </Modal>
   );
