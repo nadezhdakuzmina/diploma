@@ -5,14 +5,14 @@ import S from './styles.module.css';
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   icon?: React.ReactNode;
-  placeholder?: string;
+  label?: string;
   className?: string;
 };
 
 const Input: React.FC<InputProps> = ({
   icon,
-  placeholder,
   className,
+  label,
   ...otherProps
 }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -31,19 +31,22 @@ const Input: React.FC<InputProps> = ({
   }, []);
 
   return (
-    <div
-      onClick={clickHandler}
-      className={cn(S.root, { [S.active]: isActive }, className)}
-    >
-      {icon && <div className={S.icon}>{icon}</div>}
-      <input
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        ref={inputRef}
-        placeholder={placeholder}
-        className={S.input}
-        {...otherProps}
-      />
+    <div className={cn(S.root, className)}>
+      {label && <label className={S.label}>{label}</label>}
+      <div
+        onClick={clickHandler}
+        className={cn(S.inputWrapper, { [S.active]: isActive })}
+      >
+        {icon && <div className={S.icon}>{icon}</div>}
+        <input
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          ref={inputRef}
+          className={S.input}
+          {...otherProps}
+          type="text"
+        />
+      </div>
     </div>
   );
 };

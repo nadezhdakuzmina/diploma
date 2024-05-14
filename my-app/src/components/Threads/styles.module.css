@@ -1,5 +1,4 @@
 .root {
-  min-height: 100%;
   padding-top: 24px;
   padding-bottom: 24px;
 }
@@ -8,6 +7,6 @@
   margin-bottom: 20px;
 }
 
-.textArea {
+.commentDialog {
   margin-bottom: 20px;
 }
