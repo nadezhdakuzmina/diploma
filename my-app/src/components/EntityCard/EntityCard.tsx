@@ -9,11 +9,12 @@ type EntityCardProps = {
   className?: string;
   children?: React.ReactNode;
   link?: string;
+  onClick?: () => void;
 };
 
 const EntityCard: React.FC<EntityCardProps> = (props) => {
   return (
-    <div className={cn(S.root, props.className)}>
+    <div className={cn(S.root, props.className)} onClick={props.onClick}>
       <div className={S.image} style={{ backgroundImage: `url(${props.src})` }} />
       <div className={S.content}>
         {props.children}
