@@ -2,9 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 14px;
 }
 
 .areaWrapper {

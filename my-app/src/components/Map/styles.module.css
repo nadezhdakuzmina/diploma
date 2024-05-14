@@ -42,3 +42,9 @@
 .zoomControlButton + .zoomControlButton {
   border-top: 1px solid #e1e5ec;
 }
+
+@media (max-width: 700px) {
+  .zoomControlContainer {
+    margin-right: 15px;
+  }
+}

@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import Modal from '../Modal';
-
-import S from './styles.module.css';
 import Tags from '../Tags';
 import Comment from '../Comment';
+import CommentDialog from '../CommentDialog';
 
+import S from './styles.module.css';
 type PointModalProps = {
   onClose: () => void;
 };
@@ -28,12 +28,18 @@ const PointModal: React.FC<PointModalProps> = (props) => {
         </span>
       </div>
       <div className={S.comments}>
-        <h2 className={S.title}>Комментарии</h2>
+        <h2 className={S.title}>
+          Комментарии
+          <span className={S.commentsCounter}>5</span>
+        </h2>
         <div className={S.list}>
-          <Comment />
-          <Comment />
-          <Comment />
+          <Comment className={S.comment} name="Marina" text="Там пахнет вкусно!" date="Вчера" />
+          <Comment className={S.comment} name="Lisa" text="Кушали с подругой, остались довольны" date="Вчера" />
+          <Comment className={S.comment} name="Marina" text="Круасаны продают на той же улице, пышные и вкусные" date="Вчера" />
+          <Comment className={S.comment} name="Lisa" text="Спасибо!" date="Вчера" />
+          <Comment className={S.comment} name="Bobik" text="Там есть вкусный кофе?" date="Вчера" />
         </div>
+        <CommentDialog buttonText='Отправить' className={S.commentDialog} />
       </div>
     </Modal>
   );

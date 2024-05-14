@@ -8,6 +8,7 @@ import ContentWrapper from '../ContentWrapper';
 import LoginButton from '../LoginButton';
 
 import S from './styles.module.css';
+import Logo from '../Logo';
 
 type HeaderProps = {
   minimal?: boolean;
@@ -22,10 +23,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         <LoginButton />
       </ContentWrapper>
       <ContentWrapper className={S.content}>
-        <Link to="/" className={S.slogan}>
-          <span className={S.title}>Твой путеводитель</span>
-          <span className={S.description} >Опыт тысячи туристов в одном месте</span>
-        </Link>
+        <Logo className={S.logo} minimal={props.minimal} />
         <SearchBar
           className={S.searchBar}
           onEnter={(_, searchId) => {

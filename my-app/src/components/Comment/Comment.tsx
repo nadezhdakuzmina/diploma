@@ -1,42 +1,33 @@
-import type { FC } from 'react';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { ChatIcon } from '@chakra-ui/icons';
-import { AiOutlineHeart } from "react-icons/ai";
+import cn from 'classnames';
 
 import S from './styles.module.css';
 
-const Comment: FC = () => {
-  const [isOpenedModel, setIsOpenedModel] = React.useState<boolean>(false);
-  const onClick = React.useCallback(() => {
-    setIsOpenedModel(true);
-  }, []);
-  const handleModalClose = React.useCallback(() => {
-    setIsOpenedModel(false);
-  }, []);
+type CommentProps = {
+  className?: string;
+  name: string;
+  text: string;
+  date: string;
+};
+
+const Comment: React.FC<CommentProps> = (props) => {
+  const firstLetter = props.name[0];
+
   return (
-    <div className={S.root}>
-      <div className={S.card} >
-        <div className={S.header} >
-          <div className={S.profile}>
-            <div className={S.photo}>M</div>
-            <div className={S.info}>
-              <span className={S.title} >
-                Marina
-              </span>
-              <div className={S.text} >
-                <span>
-                  Мне нравится этот пост!
-                </span>
-              </div>
-              <span className={S.date} >
-                Today
-              </span>
-            </div>
-          </div>
-        </div>
+    <div className={cn(S.root, props.className)}>
+      <div className={S.avatar}>{firstLetter}</div>
+      <div className={S.content}>
+        <span className={S.title}>
+          {props.name}
+        </span>
+        <span className={S.text}>
+          {props.text}
+        </span>
+        <span className={S.date}>
+          {props.date}
+        </span>
       </div>
-  </div>
+    </div>
 )};
 
 export default Comment;

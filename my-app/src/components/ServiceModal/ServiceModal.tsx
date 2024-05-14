@@ -5,6 +5,7 @@ import Modal from '../Modal';
 import S from './styles.module.css';
 import Tags from '../Tags';
 import Comment from '../Comment';
+import CommentDialog from '../CommentDialog';
 
 type ServiceModalProps = {
   onClose: () => void;
@@ -23,15 +24,18 @@ const ServiceModal: React.FC<ServiceModalProps> = (props) => {
           tags={['транспорт', 'такси']}
         />
         <h2 className={S.title}>Uber</h2>
-        <span className={S.description}>Сервис такси</span>
+        <span className={S.description}>Сервис такси. Можно заказать такси в любом месте и в любое время. Пожалуй самый удобный вариант для этого города. Цены конечно кусаются =)</span>
       </div>
       <div className={S.comments}>
-        <h2 className={S.title}>Комментарии</h2>
+        <h2 className={S.title}>
+          Комментарии
+          <span className={S.commentsCounter}>2</span>
+        </h2>
         <div className={S.list}>
-          <Comment />
-          <Comment />
-          <Comment />
+          <Comment className={S.comment} name="Marina" text="Такси 5 звезд!" date="Вчера" />
+          <Comment className={S.comment} name="Bobik" text="Доехал до центра за 100 батт" date="Вчера" />
         </div>
+        <CommentDialog buttonText='Отправить' className={S.commentDialog} />
       </div>
     </Modal>
   );

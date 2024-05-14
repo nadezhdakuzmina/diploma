@@ -78,3 +78,11 @@
     --categories-padding: 20px;
   }
 }
+
+@media (max-width: 700px) {
+  .categories {
+    --categories-padding: 15px;
+
+    padding-top: 12px;
+  }
+}

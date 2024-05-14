@@ -16,6 +16,12 @@
 }
 
 .addButtonIcon {
-  width: 16px;
+  width: 12px;
   margin-right: 6px;
+}
+
+@media (max-width: 700px) {
+  .addButton {
+    bottom: 12px;
+  }
 }

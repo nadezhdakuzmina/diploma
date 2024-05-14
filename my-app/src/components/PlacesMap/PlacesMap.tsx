@@ -5,6 +5,8 @@ import Button from '../Button';
 import AddPointDialog from '../AddPointDialog';
 import Map, { type Point } from '../Map';
 
+import logo from '../Logo/logo_white.svg';
+
 import S from './styles.module.css';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -46,9 +48,10 @@ const PlacesMap: React.FC<PlacesMapProps> = (props) => {
             map={map}
           />
           <Button onClick={handleAddPointButtonClick} className={S.addButton}>
-            <svg className={S.addButtonIcon} viewBox="0 0 16 16">
+            {/* <svg className={S.addButtonIcon} viewBox="0 0 16 16">
               <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-            </svg>
+            </svg> */}
+            <img className={S.addButtonIcon} src={logo} />
             Добавить место
           </Button>
           {isAddPointDialogShown && (
