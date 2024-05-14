@@ -11,8 +11,8 @@ type TagsProps = {
 const Tags: React.FC<TagsProps> = (props) => {
   return (
     <div className={cn(S.tags, props.className)}>
-      {props.tags.map((tag) => (
-        <div key={tag} className={S.tag}>#{tag}</div>
+      {props.tags.map((tag, index) => (
+        <div key={`${tag}_${index}`} className={S.tag}>#{tag}</div>
       ))}
     </div>
   );

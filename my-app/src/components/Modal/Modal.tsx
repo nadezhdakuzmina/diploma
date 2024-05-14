@@ -1,11 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
 
+import ContentWrapper from '../ContentWrapper';
+
 import { withRenderOnTop } from '../../hocs/withRenderOnTop';
+import { useOutsideClick } from '../../hooks/useOutsideClick';
+import { scrollLocker } from '../../utils/scrollLocker';
 
 import S from './styles.module.css';
-import { useOutsideClick } from '../../hooks/useOutsideClick';
-import ContentWrapper from '../ContentWrapper';
 
 type ModalProps = {
   children: React.ReactNode;
@@ -27,11 +29,17 @@ const Modal: React.FC<ModalProps> = (props) => {
 
   React.useEffect(() => {
     setShown(true);
+
+    const unlockScroll = scrollLocker();
+
+    return () => {
+      unlockScroll();
+    };
   }, []);
 
   return (
     <div className={cn(S.root, { [S.shown]: isShown })}>
-      <ContentWrapper>
+      <ContentWrapper className={S.contentWrapper}>
         <div ref={contaierRef} className={cn(S.content, props.className)}>
           {props.children}
           <svg onClick={closeHandler} className={S.closeButton} viewBox="0 -0.5 25 25">

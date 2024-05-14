@@ -1,8 +1,5 @@
 .root {
   position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,7 +7,6 @@
   z-index: 1000;
   opacity: 0;
   transition-duration: .15s;
-  padding: 50px 0;
   overflow-y: auto;
 }
 
@@ -27,6 +23,15 @@
   height: 100%;
   z-index: -1;
   background-color: rgba(0, 0, 0, 0.55);
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding-top: 50px;
+  padding-bottom: 25px;
 }
 
 .content {

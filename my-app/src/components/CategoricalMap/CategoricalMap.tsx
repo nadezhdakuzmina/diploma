@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Map from '../Map';
+import PlacesMap from '../PlacesMap';
 import CategoryCard from '../CategoryCard';
 import PointModal from '../PointModal';
 
@@ -201,7 +201,7 @@ const CategoricalMap: React.FC = () => {
           />
         ))}
       </div>
-      <Map
+      <PlacesMap
         className={S.map}
         zoom={9}
         centerPoint={[-70.9, 42.35]}

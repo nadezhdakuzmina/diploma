@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import Header from '../../components/Header';
-import ContentWrapper from '../../components/ContentWrapper';
 import { TabsItem, TabsProvider } from '../../components/Tabs';
 
 import CategoricalMap from '../../components/CategoricalMap';

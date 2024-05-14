@@ -11,31 +11,32 @@
   font-weight: 600;
 }
 
-.inputWrapper {
+.wrapper {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   border-radius: 14px;
-  padding: 8px 16px;
+  padding: 10px 16px 16px 16px;
   background-color: hsl(240 5.88% 90%/.5);
   box-shadow: 0 0 #0000, 0 0 #0000, 0 20px 25px -5px rgba(0,0,0,.05), 0 8px 10px -6px rgba(0,0,0,.05);
   transition-duration: .15s;
+  width: 100%;
   cursor: text;
-  height: 56px;
 }
 
-.inputWrapper:hover {
+.wrapper:hover {
   background-color: hsl(240 5.88% 90%/.7);
 }
 
-.inputWrapper.active {
+.wrapper.active {
   background-color: #fff;
 }
 
-.icon {
-  color: rgb(148 163 184/1);
-  flex-shrink: 0;
-  pointer-events: none;
-  margin-right: 10px;
+.wrapper > * {
+  margin-top: 6px;
+}
+
+.tags {
+  margin-right: 2px;
 }
 
 .input {
@@ -46,9 +47,7 @@
   line-height: 20px;
   background-color: transparent;
   -webkit-tap-highlight-color: transparent;
-  width: 100%;
-}
-
-.input:disabled {
-  color: #999;
+  flex-shrink: 1;
+  flex-grow: 1;
+  min-width: 150px;
 }

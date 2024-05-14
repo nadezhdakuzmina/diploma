@@ -1,11 +1,9 @@
-.placeholder {
-  background-color: var(--chakra-colors-gray-300);
-}
-
-.map {
+.root {
   height: 100%;
   width: 100%;
   position: relative;
+
+  --controll-shaddow: 0 8px 16px rgba(0,0,0,0.08);
 }
 
 .zoomControlWrapper {
@@ -23,7 +21,7 @@
 .zoomControlCapsul {
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  box-shadow: var(--controll-shaddow);
   pointer-events: auto;
 }
 

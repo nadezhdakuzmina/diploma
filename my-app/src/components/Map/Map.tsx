@@ -2,18 +2,16 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import MboxGL, { Map as MBoxMap } from 'mapbox-gl';
-import MapPoints, { type PointData } from '../MapPoints';
 
 import S from './styles.module.css';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 type MapProps = {
   centerPoint: Point;
   className?: string;
   zoom?: number;
-  onSelect?: (id: string) => void;
-  selectedPoint?: string; 
-  points?: PointData[];
+  children?: (map: MBoxMap) => React.ReactNode;
 };
 
 export const DEFAULT_ZOOM = 9;
@@ -62,17 +60,9 @@ const Map: React.FC<MapProps> = (props) => {
 
   return (
     <div
-      className={cn(S.map, props.className)}
+      className={cn(S.root, props.className)}
       ref={setContainerRef}
     >
-      {map && (
-        <MapPoints
-          selectedPoint={props.selectedPoint}
-          onSelect={props.onSelect}
-          points={props.points || []}
-          map={map}
-        />
-      )}
       <div className={S.zoomControlWrapper}>
         <div className={S.zoomControlContainer}>
           <div className={S.zoomControlCapsul}>
@@ -91,6 +81,7 @@ const Map: React.FC<MapProps> = (props) => {
           </div>
         </div>
       </div>
+      {map && props.children?.(map)}
     </div>
   );
 

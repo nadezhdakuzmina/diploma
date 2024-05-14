@@ -1,0 +1,21 @@
+.addButton {
+  position: absolute;
+  z-index: 1;
+  bottom: 24px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  box-shadow: var(--controll-shaddow);
+
+  font-size: 16px;
+  line-height: 30px;
+  background-color: var(--pink);
+  color: #fff;
+  fill: #fff;
+  font-weight: 700;
+}
+
+.addButtonIcon {
+  width: 16px;
+  margin-right: 6px;
+}

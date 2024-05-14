@@ -3,19 +3,17 @@ import cn from 'classnames';
 
 import S from './styles.module.css';
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  icon?: React.ReactNode;
-  label?: string;
+type TextAreaProps = React.HTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
+  label?: string;
 };
 
-const Input: React.FC<InputProps> = ({
-  icon,
+const TextArea: React.FC<TextAreaProps> = ({
   className,
   label,
   ...otherProps
 }) => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = React.useRef<HTMLTextAreaElement>(null);
   const [isActive, setActive] = React.useState(false);
 
   const handleFocus = React.useCallback(() => {
@@ -33,22 +31,18 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className={cn(S.root, className)}>
       {label && <label className={S.label}>{label}</label>}
-      <div
-        onClick={clickHandler}
-        className={cn(S.inputWrapper, { [S.active]: isActive })}
-      >
-        {icon && <div className={S.icon}>{icon}</div>}
-        <input
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          ref={inputRef}
-          className={S.input}
+      <div onClick={clickHandler} className={cn(S.wrapper, { [S.active]: isActive })}>
+        <textarea
+          placeholder="Давным давно в далекой галактике..."
+          className={S.textArea}
           {...otherProps}
-          type="text"
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          ref={inputRef}
         />
       </div>
     </div>
   );
 };
 
-export default Input;
+export default TextArea;

@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import ContentWrapper from '../ContentWrapper';
 import PlaceCard from '../PlaceCard';
+import Breadcrumbs from '../Breadcrumbs';
 
 import S from './styles.module.css';
 
@@ -59,6 +60,16 @@ const COUNTRIES = [
 const Cities: React.FC = () => {
   return (
     <ContentWrapper className={S.root}>
+      <Breadcrumbs className={S.breadcrumbs} crumbs={[
+        {
+          link: '/',
+          text: 'Главная',
+        },
+        {
+          link: '/#countries',
+          text: 'Страны',
+        },
+      ]} />
       <div className={S.content}>
         {COUNTRIES.map((item) => (
           <PlaceCard
