@@ -20,8 +20,12 @@
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@containers/*": ["./src/containers/*"],
+      "@routing": ["src/routing/index.ts"],
+      "@routing/*": ["src/routing/*"],
       "@pages/*": ["./src/pages/*"],
       "@utils/*": ["./src/utils/*"],
+      "@hocs/*": ["./src/hocs/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@data/*": ["./src/data/*"],
       "@entries/*": ["src/entries/*"],
       "@root/*": ["./src/*"]

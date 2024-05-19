@@ -1,0 +1,50 @@
+.root {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  --controll-shaddow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.zoomControlWrapper {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+}
+
+.zoomControlContainer {
+  transform: translateY(-50%);
+  margin-right: 20px;
+}
+
+.zoomControlCapsul {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: var(--controll-shaddow);
+  pointer-events: auto;
+}
+
+.zoomControlButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5a6472;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+}
+
+.zoomControlButton:hover {
+  color: #0c131d;
+}
+
+.zoomControlButton + .zoomControlButton {
+  border-top: 1px solid #e1e5ec;
+}
+
+@media (max-width: 700px) {
+  .zoomControlContainer {
+    margin-right: 15px;
+  }
+}

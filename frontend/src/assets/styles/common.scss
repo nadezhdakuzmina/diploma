@@ -1,13 +1,24 @@
-body, html, #root {
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, html {
   height: 100%;
   width: 100%;
-  font-family: 'Gilroy', Verdana, 'Geneva', Tahoma, sans-serif;
-  font-size: 14px;
-  color: var(--primaryTextColor);
 }
 
 body {
-  background: linear-gradient(289.08deg, #F9FBFD -24.56%, #D2E0FA -24.55%, #F9FBFD 88.59%);
+  background-color: var(--grey);
+  font-family: var(--fonts);
+  line-height: 1.5;
+  font-size: 16px;
+  font-feature-settings: "kern";
+  color: #1A202C;
+  color-scheme: light;
 }
 
 * {
@@ -27,6 +38,72 @@ b {
 
 ul {
   list-style: none;
+}
+
+:where(*, *::before, *::after) {
+  border-width: 0;
+  border-style: solid;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+:where(button, input, optgroup, select, textarea) {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+:where(button, input) {
+  overflow: visible;
+}
+
+:where(button, input, optgroup, select, textarea) {
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
+}
+
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+  display: block;
+}
+
+:where(*, *::before, *::after) {
+  border-width: 0;
+  border-style: solid;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: var(--placeholder-color);
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: var(--placeholder-color);
+  opacity:  1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: var(--placeholder-color);
+  opacity:  1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--placeholder-color);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--placeholder-color);
+}
+
+::placeholder { /* Most modern browsers support this now. */
+  color: var(--placeholder-color);
+}
+
+svg:not(:root) {
+  overflow-clip-margin: content-box;
+  overflow: hidden;
 }
 
 div[id="root"] {

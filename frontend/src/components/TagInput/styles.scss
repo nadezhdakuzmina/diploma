@@ -1,0 +1,53 @@
+.root {
+  width: 100%;
+}
+
+.label {
+  display: inline-block;
+  padding-left: 16px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 14px;
+  padding: 10px 16px 16px 16px;
+  background-color: hsl(240 5.88% 90%/.5);
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 20px 25px -5px rgba(0,0,0,.05), 0 8px 10px -6px rgba(0,0,0,.05);
+  transition-duration: .15s;
+  width: 100%;
+  cursor: text;
+}
+
+.wrapper:hover {
+  background-color: hsl(240 5.88% 90%/.7);
+}
+
+.wrapper.active {
+  background-color: #fff;
+}
+
+.wrapper > * {
+  margin-top: 6px;
+}
+
+.tags {
+  margin-right: 2px;
+}
+
+.input {
+  outline: none;
+  color: #333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 1;
+  flex-grow: 1;
+  min-width: 150px;
+}

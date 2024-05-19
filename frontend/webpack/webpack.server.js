@@ -43,6 +43,10 @@ module.exports = merge(common, {
           },
         ]
       },
+      {
+        test: /\.css$/,
+        use: ['null-loader'],
+      },
     ],
   },
 });

@@ -1,0 +1,68 @@
+.root {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+}
+
+.root .searchBar {
+  color: #333;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: #777;
+}
+
+.searchBar .inputLeft {
+  height: 64px;
+}
+
+.searchBar .input {
+  height: 64px;
+  background-color: #fff;
+}
+
+.suggest {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  padding-top: 64px;
+  background-color: #fff;
+  border-radius: 14px;
+  width: 100%;
+  box-shadow: 0 0px 9px -6px #333;
+  overflow: hidden;
+  color: #333;
+}
+
+.suggestLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.suggestItem {
+  padding: 10px 40px;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f07f;
+  cursor: pointer;
+}
+
+.suggestItem:hover {
+  background-color: #e2e8f07f;
+}
+
+.suggestSubItem {
+  font-size: 14px;
+  padding-left: 60px;
+}
+
+.suggestSubItem span {
+  font-weight: normal;
+  color: gray;
+  font-size: 14px;
+}

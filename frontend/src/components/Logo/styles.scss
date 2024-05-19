@@ -1,0 +1,80 @@
+.root {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: Verdana;
+}
+
+.slogan {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 40px;
+  margin-right: 16px;
+}
+
+.minimalRoot .logo {
+  width: 30px;
+  margin-right: 12px;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 800;
+}
+
+.minimalRoot .title {
+  font-size: 26px;
+  line-height: 30px;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.minimalRoot .description {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media (max-width: 700px) {
+  .logo {
+    width: 30px;
+    margin-right: 12px;
+  }
+
+  .title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 500px) {
+  .minimalRoot .logo,
+  .logo {
+    width: 26px;
+    margin-right: 8px;
+  }
+
+  .minimalRoot .title,
+  .title {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .minimalRoot .description,
+  .description {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

@@ -13,7 +13,7 @@ module.exports = {
   mode: isProduction ? 'production' : 'development',
   devtool: !isProduction && 'source-map',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.scss'],
+    extensions: ['.ts', '.tsx', '.js', '.scss', '.css'],
     plugins: [
       new TsconfigPathsPlugin({
         configFile: tsConfigPath,
@@ -43,6 +43,10 @@ module.exports = {
             configFile: tsConfigPath,
           },
         },
+      },
+      {
+        test: /\?inline$/,
+        use: ['raw-loader']
       },
     ],
   },

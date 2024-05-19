@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  width: fit-content;
+}
+
+.tab {
+  border-radius: 10px 10px 0 0;
+  padding: 8px 10px;
+  background-color: transparent;
+  transition-duration: 0.1s;
+  color: #fff;
+  cursor: pointer;
+  transition-duration: .15s;
+}
+
+.tab + .tab {
+  margin-left: 1px;
+}
+
+.activeTab {
+  background: hsl(240 5.88% 90%/.5);
+  box-sizing: content-box;
+}

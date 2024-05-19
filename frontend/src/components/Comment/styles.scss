@@ -1,0 +1,39 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.avatar {
+  display: flex;
+  background: linear-gradient(30deg, rgba(255,78,205,1) 0%, rgba(245,165,36,1) 100%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 35px;
+  height: 35px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.date {
+  font-size: 14px;
+  color: #888;
+}
