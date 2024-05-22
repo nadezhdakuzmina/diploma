@@ -1,6 +1,6 @@
 import md5 from 'md5';
 
-import User from './User';
+import User, { Role } from './User';
 
 import { ADMINJS_SECRET } from '@constants';
 
@@ -26,14 +26,22 @@ export const authenticate = async (
     email: usernameOrEmail,
     password: hashedPassword,
   });
+
   const userByUsername = User.findOneBy({
     username: usernameOrEmail,
     password: hashedPassword,
   });
 
-  return Promise.all([userByEmail, userByUsername]).then(
-    ([foundUserByEmail, foundUserByUsername]) => {
-      return foundUserByEmail || foundUserByUsername;
-    }
-  );
+  return Promise.all([userByEmail, userByUsername])
+    .then(
+      ([foundUserByEmail, foundUserByUsername]) =>
+        foundUserByEmail || foundUserByUsername
+    )
+    .then((user) => {
+      if (user?.role !== Role.Admin) {
+        return null;
+      }
+
+      return user;
+    });
 };

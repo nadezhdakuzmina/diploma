@@ -1,7 +1,7 @@
 import AdminJSExpress from '@adminjs/express';
 import { ADMINJS_SECRET } from '@constants';
 
-import { authenticate } from '@entities/User/helpers';
+import { authenticate } from '@entities/User';
 
 import { Admin } from '@views';
 

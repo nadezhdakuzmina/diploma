@@ -1,7 +1,6 @@
 import passwordsFeature from '@adminjs/passwords';
 
-import { User } from '@entities/User';
-import { hashPassword } from '@entities/User/helpers';
+import { User, hashPassword } from '@entities/User';
 
 export const UserResouce = {
   resource: User,
@@ -14,8 +13,9 @@ export const UserResouce = {
         showInDrawer: true,
       },
     },
-    listProperties: ['email', 'username', 'password'],
-    showProperties: ['email', 'username', 'password'],
+    listProperties: ['id', 'email', 'username', 'role'],
+    showProperties: ['id', 'email', 'username', 'role'],
+    editProperties: ['email', 'username', 'password', 'role'],
   },
   features: [
     passwordsFeature({
