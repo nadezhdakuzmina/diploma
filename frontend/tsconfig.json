@@ -16,7 +16,7 @@
     "paths": {
       "@app": ["./src/app"],
       "@constants": ["./src/constants.ts"],
-      "@types": ["./src/types.ts"],
+      "@types": ["./src/types/index.ts"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@containers/*": ["./src/containers/*"],
@@ -28,6 +28,7 @@
       "@hooks/*": ["./src/hooks/*"],
       "@data/*": ["./src/data/*"],
       "@entries/*": ["src/entries/*"],
+      "@api": ["src/api/index.ts"],
       "@root/*": ["./src/*"]
     },
   },

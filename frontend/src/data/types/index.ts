@@ -1,5 +1,5 @@
-import type { UserState } from '@data/reducers/users';
+import type { UserState } from '@data/entities/user/types';
 
 export interface State {
-  users: UserState;
+  user: UserState;
 }

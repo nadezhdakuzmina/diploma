@@ -1,4 +1,3 @@
-import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { discoverProjectStyles, getCriticalStyles } from 'used-styles';
@@ -8,25 +7,18 @@ import App from '@app';
 
 import { templator } from './html';
 import { createStore } from '@data/store';
-import { initStore } from '@data/store/initStore';
+import { initServerState } from '@data/store/initServerState';
 
-import {
-  SERVER_PORT,
-  STATIC_PATH,
-} from '@constants';
+import { STATIC_PATH } from '@constants';
 
-const expressApp = express();
+import type { Request, Response } from '@types';
+
 const stylesLookup = discoverProjectStyles(STATIC_PATH);
 
-const staticRouter = express.Router();
-staticRouter.get('*', express.static(STATIC_PATH));
-expressApp.use('/static', staticRouter);
-
-expressApp.get(`*`, async (req, res) => {
+export const ssr = async (req: Request, res: Response) => {
   await stylesLookup;
 
-  const cookieToken = req.headers.cookie?.match(/user_token=([a-zA-Z0-9]+)/)?.[1];
-  const state = await initStore(cookieToken);
+  const state = initServerState(req);
   const store = createStore(state);
 
   const helmet = Helmet.renderStatic();
@@ -52,8 +44,4 @@ expressApp.get(`*`, async (req, res) => {
   res.status(200);
 
   return res.send(indexHTML);
-});
-
-expressApp.listen(SERVER_PORT, () => {
-  console.log(`Server is listening on port: ${SERVER_PORT}`);
-});
+};

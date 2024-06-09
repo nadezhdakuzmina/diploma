@@ -6,7 +6,7 @@ const common = require('./common');
 
 module.exports = merge(common, {
   entry: {
-    main: path.resolve(__dirname, '../src/entries/server/index.tsx'),
+    main: path.resolve(__dirname, '../src/entries/server/index.ts'),
   },
   output: {
     path: path.resolve(__dirname, '../dist'),

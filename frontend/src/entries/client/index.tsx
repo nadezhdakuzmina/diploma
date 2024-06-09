@@ -5,13 +5,13 @@ import App from '@app';
 
 
 import { createStore } from '@data/store';
-import { initStore } from '@data/store/initStore';
+import { initClientState } from '@data/store/initClientState';
 
 import DOMReady from '@utils/DOMReady';
 import { IS_PRODUCTION, PRELOADED_STATE_KEY } from '@constants';
 
 DOMReady.then(async () => {
-  const preloadedState = window[PRELOADED_STATE_KEY] || await initStore();
+  const preloadedState = window[PRELOADED_STATE_KEY] || initClientState();
   delete window[PRELOADED_STATE_KEY];
 
   const store = createStore(preloadedState);

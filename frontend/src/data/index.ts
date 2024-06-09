@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { users } from '@data/reducers/users';
+import { reducer as userReducer } from '@data/entities/user';
 
 export const reducer = combineReducers({
-  users,
+  user: userReducer,
 });

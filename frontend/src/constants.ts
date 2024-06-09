@@ -10,4 +10,4 @@ export const INDEX_PATH = `${STATIC_PATH}/index.html`;
 
 export const PRELOADED_STATE_KEY = '__PRELOADED_STATE__';
 
-export const BACKEND_BASE_URL = 'http://localhost:9090';
+export const BACKEND_BASE_URL = 'http://localhost:9090/api';
