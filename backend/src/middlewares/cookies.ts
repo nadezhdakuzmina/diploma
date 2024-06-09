@@ -1,4 +1,4 @@
-import { getCookies } from '@utils/getCookie';
+import { getCookies } from '@utils/getCookies';
 
 import type { Request, Response } from '@types';
 import type { NextFunction } from 'express';

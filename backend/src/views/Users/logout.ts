@@ -1,13 +1,11 @@
-import { User } from '@entities/User';
+import { authenticate } from '@entities/User/authentication';
 
 import { USER_ACCESS_TOKEN_COOKIE_NAME } from '@entities/User/constants';
 
 import type { Request, Response } from '@types';
 
 export const logout = async (req: Request, res: Response) => {
-  const userAccessToken = req.cookies[USER_ACCESS_TOKEN_COOKIE_NAME];
-
-  const user = await User.findOneBy({ userAccessToken });
+  const user = await authenticate(req);
 
   if (!user) {
     return res.json({
@@ -18,7 +16,7 @@ export const logout = async (req: Request, res: Response) => {
   user.userAccessToken = null;
   await user.save();
 
-  res.setCookie(USER_ACCESS_TOKEN_COOKIE_NAME, userAccessToken, {
+  res.setCookie(USER_ACCESS_TOKEN_COOKIE_NAME, '', {
     httpOnly: true,
     path: '/',
     sameSite: false,

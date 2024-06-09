@@ -3,7 +3,7 @@ import { DOMAIN, IS_DEV } from '@constants';
 import type { Request, Response } from '@types';
 import type { NextFunction } from 'express';
 
-export const commonMiddlewares = (
+export const baseMiddlewares = (
   req: Request,
   _: Response,
   next: NextFunction

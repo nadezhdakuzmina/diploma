@@ -4,6 +4,11 @@ export const getCookies = (req: Request): Record<string, string> => {
   const { headers } = req;
 
   let cookieHeader = headers['Cookie'] || headers['cookie'];
+
+  if (!cookieHeader) {
+    return {};
+  }
+
   if (Array.isArray(cookieHeader)) {
     cookieHeader = cookieHeader.reduce(
       (acc, item) => [acc, item].join('; '),

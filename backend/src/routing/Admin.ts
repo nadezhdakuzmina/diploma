@@ -1,7 +1,7 @@
 import AdminJSExpress from '@adminjs/express';
 import { ADMINJS_SECRET } from '@constants';
 
-import { authenticate } from '@entities/User';
+import { authenticateAdmin } from '@entities/User/authentication';
 
 import { Admin } from '@views';
 
@@ -10,7 +10,7 @@ export const AdminPath = '/admin';
 export const AdminRouter = AdminJSExpress.buildAuthenticatedRouter(
   Admin,
   {
-    authenticate,
+    authenticate: authenticateAdmin,
     cookieName: 'adminjs',
     cookiePassword: ADMINJS_SECRET,
   },

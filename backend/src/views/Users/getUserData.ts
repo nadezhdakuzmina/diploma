@@ -1,12 +1,9 @@
-import { User } from '@entities/User';
-import { USER_ACCESS_TOKEN_COOKIE_NAME } from '@entities/User/constants';
+import { authenticate } from '@entities/User/authentication';
 
 import type { Request, Response } from '@types';
 
 export const getUserData = async (req: Request, res: Response) => {
-  const userAccessToken = req.cookies[USER_ACCESS_TOKEN_COOKIE_NAME];
-
-  const user = await User.findOneBy({ userAccessToken });
+  const user = await authenticate(req);
 
   if (!user) {
     return res.json({
