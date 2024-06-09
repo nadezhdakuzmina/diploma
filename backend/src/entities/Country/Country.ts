@@ -26,7 +26,7 @@ class Country extends BaseEntity {
   description: string;
 
   /** LOGO REALATION  */
-  @OneToOne(() => Image, (image) => image.country, {
+  @OneToOne(() => Image, {
     nullable: true,
   })
   @JoinColumn({ name: 'logo_id' })

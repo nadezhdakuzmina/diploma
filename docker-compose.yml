@@ -9,7 +9,7 @@ services:
     ports:
       - "9090:9090" # Потом прикрыть эти порты наружу
     env_file:
-      - .env.prod
+      - .env
     depends_on:
       - postgres
     networks:
@@ -21,11 +21,11 @@ services:
     image: postgres:12-alpine
     container_name: postgres
     volumes:
-      - .postgres:/var/lib/postgresql/data/
+      - ./.postgres/data:/var/lib/postgresql/data/
     ports:
       - "5432:5432" # Потом прикрыть эти порты наружу
     env_file:
-      - .env.prod
+      - .env
     networks:
       - infrastructure
 

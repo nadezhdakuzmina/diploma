@@ -28,7 +28,7 @@ class City extends BaseEntity {
   description: string;
 
   /** LOGO REALATION  */
-  @OneToOne(() => Image, (image) => image.city, {
+  @OneToOne(() => Image, {
     nullable: true,
   })
   @JoinColumn({ name: 'logo_id' })

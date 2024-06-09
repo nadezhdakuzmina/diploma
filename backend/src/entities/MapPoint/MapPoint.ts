@@ -7,6 +7,7 @@ import {
   JoinColumn,
   RelationId,
   OneToMany,
+  ManyToMany,
 } from 'typeorm';
 
 import { City } from '@entities/City';
@@ -56,7 +57,7 @@ class MapPoint extends BaseEntity {
   cityId: number;
   /** /CITY REALATION  */
 
-  @OneToMany(() => Image, (image) => image.point)
+  @ManyToMany(() => Image)
   images: Image[];
 
   @OneToMany(() => Comment, (comment) => comment.point)

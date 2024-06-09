@@ -41,7 +41,7 @@ class Service extends BaseEntity {
   /** /USER REALATION  */
 
   /** LOGO REALATION  */
-  @OneToOne(() => Image, (image) => image.service, {
+  @OneToOne(() => Image, {
     nullable: true,
   })
   @JoinColumn({ name: 'logo_id' })
