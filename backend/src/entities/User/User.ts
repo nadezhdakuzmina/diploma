@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   OneToMany,
+  PrimaryColumn,
 } from 'typeorm';
 
 import { Comment } from '@entities/Comment';
@@ -22,13 +23,37 @@ class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true })
-  email: string;
+  @Column({ unique: true, nullable: true, default: null })
+  vkId: number;
 
-  @Column({ unique: true })
+  @Column({ nullable: true, default: null })
+  vkAccessToken: string;
+
+  @Column({ nullable: true, default: null })
+  vkAccessTokenId: number;
+
+  @Column({ type: 'timestamptz', nullable: true, default: null })
+  vkAccessTokenExpires: Date;
+
+  @Column({ nullable: true, default: null })
+  userAccessToken: string;
+
+  @Column({ nullable: true, default: null })
+  photo: string;
+
+  @Column({ nullable: true, default: null })
+  photo200: string;
+
+  @Column({ nullable: true, default: null })
+  firstName: string;
+
+  @Column({ nullable: true, default: null })
+  lastName: string;
+
+  @Column({ unique: true, nullable: true, default: null })
   username: string;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   password: string;
 
   @Column({ enum: Role, default: Role.Default })

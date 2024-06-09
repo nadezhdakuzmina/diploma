@@ -2,7 +2,7 @@ import md5 from 'md5';
 
 import User, { Role } from './User';
 
-import { ADMINJS_SECRET } from '@constants';
+import { ADMINJS_SECRET, SECRET } from '@constants';
 
 export const hashPassword = async (password: string) =>
   md5(`${ADMINJS_SECRET}:${password}`);
@@ -22,26 +22,20 @@ export const authenticate = async (
     };
   }
 
-  const userByEmail = User.findOneBy({
-    email: usernameOrEmail,
-    password: hashedPassword,
-  });
-
   const userByUsername = User.findOneBy({
     username: usernameOrEmail,
     password: hashedPassword,
   });
 
-  return Promise.all([userByEmail, userByUsername])
-    .then(
-      ([foundUserByEmail, foundUserByUsername]) =>
-        foundUserByEmail || foundUserByUsername
-    )
-    .then((user) => {
-      if (user?.role !== Role.Admin) {
-        return null;
-      }
+  return userByUsername.then((user) => {
+    if (user?.role !== Role.Admin) {
+      return null;
+    }
 
-      return user;
-    });
+    return user;
+  });
+};
+
+export const createUserAccessTokenByVkAccessToken = (vkAccessToken: string) => {
+  return md5(`${SECRET}:${vkAccessToken}`);
 };

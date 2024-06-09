@@ -1,5 +1,9 @@
-import { getUsers } from './getUsers';
+import { getUserData } from './getUserData';
+import { logout } from './logout';
+import { oauth } from './oauth';
 
 export default {
-  getUsers,
+  oauth,
+  getUserData,
+  logout,
 };

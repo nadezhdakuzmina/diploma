@@ -34,7 +34,7 @@ export const createDataSource = async (options: DataSouceOptions) => {
   return DataBaseSource.initialize().then(() => DataBaseSource);
 };
 
-export const useDataSource = (
+export const dataSourceMiddlewares = (
   req: Request,
   _: Response,
   next: NextFunction

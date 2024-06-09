@@ -1,3 +1,4 @@
+import * as VKID from '@vkid/sdk';
 import * as React from 'react';
 import cn from 'classnames';
 
@@ -10,9 +11,19 @@ type LoginButtonProps = {
 }
 
 const LoginButton: React.FC<LoginButtonProps> = (props) => {
+  const clickHandler = React.useCallback(() => {
+    VKID.Config.set({
+      state: encodeURIComponent(JSON.stringify({
+        redirectUrl: window.document.location.href,
+      })),
+    });
+
+    VKID.Auth.login();
+  }, []);
+
   return (
     <Button
-      link="/login"
+      onClick={clickHandler}
       className={cn(S.root, props.className)}
     >
       Войти

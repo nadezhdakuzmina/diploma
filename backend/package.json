@@ -2,11 +2,7 @@
   "name": "backend",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "start:http": "ONLY=http ts-node ./src/index.ts",
-    "start:ws": "ONLY=ws ts-node ./src/index.ts",
     "start:dev": "MODE=dev ts-node ./src/index.ts",
-    "start:http:dev": "MODE=dev ONLY=http ts-node ./src/index.ts",
-    "start:ws:dev": "MODE=dev ONLY=ws ts-node ./src/index.ts",
     "lint": "lint-staged"
   },
   "husky": {
@@ -41,7 +37,6 @@
     "@adminjs/passwords": "^3.0.1",
     "@adminjs/typeorm": "^4.0.0",
     "adminjs": "^6.8.7",
-    "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.3",

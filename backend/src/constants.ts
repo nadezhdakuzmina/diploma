@@ -21,3 +21,9 @@ export const DB_BASE = process.env.POSTGRES_DB;
 
 export const ADMINJS_SECRET = process.env.ADMINJS_SECRET;
 export const MAX_QUERY_EXECUTION_TIME = 2000;
+
+export const SECRET = process.env.SECRET;
+export const DOMAIN = process.env.DOMAIN;
+
+export const VK_ACCESS_TOKEN = process.env.VK_ACCESS_TOKEN;
+export const VK_APP_ID = process.env.VK_APP_ID;

@@ -1,6 +1,6 @@
 import { Country } from '@entities/Country';
 
-import { Request, Response } from '@types';
+import type { Request, Response } from '@types';
 
 export const getCountries = async (req: Request, res: Response) => {
   const countries = await Country.find({

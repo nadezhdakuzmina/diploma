@@ -13,9 +13,9 @@ export const UserResouce = {
         showInDrawer: true,
       },
     },
-    listProperties: ['id', 'email', 'username', 'role'],
-    showProperties: ['id', 'email', 'username', 'role'],
-    editProperties: ['email', 'username', 'password', 'role'],
+    listProperties: ['id', 'username', 'name', 'vkId', 'role'],
+    showProperties: ['id', 'username', 'name', 'vkId', 'role'],
+    editProperties: ['username', 'name', 'vkId', 'role'],
   },
   features: [
     passwordsFeature({

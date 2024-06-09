@@ -1,13 +1,13 @@
 import { City } from '@entities/City';
 
-import { Request, Response } from '@types';
+import type { Request, Response } from '@types';
 
-type QueryPrams = {
+type QueryParams = {
   countryId: string;
 };
 
 export const getCities = async (req: Request, res: Response) => {
-  const { countryId } = req.query as QueryPrams;
+  const { countryId } = req.query as QueryParams;
 
   if (!countryId) {
     return res.status(400).json({
