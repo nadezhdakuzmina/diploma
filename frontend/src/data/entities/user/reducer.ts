@@ -1,4 +1,4 @@
-import { SET_USER } from '@data/actions/user/actions';
+import { LOGOUT } from '@data/actions/user/actions';
 
 import { defaultState } from './defaultState';
 
@@ -7,8 +7,8 @@ import type { UserState } from './types';
 
 export const reducer = (state = defaultState, action: ActionTypes): UserState => {
   switch (action.type) {
-    case SET_USER:
-      return action.user;
+    case LOGOUT:
+      return null;
 
     default:
       return state;

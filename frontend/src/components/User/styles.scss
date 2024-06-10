@@ -1,4 +1,19 @@
 .root {
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    .button {
+      opacity: 1;
+    }
+
+    .logoutButton {
+      height: 150%;
+    }
+  }
+}
+
+.button {
   display: flex;
   align-items: center;
 
@@ -11,12 +26,46 @@
   padding-top: 2px;
   padding-bottom: 2px;
   padding-right: 2px;
+
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 .logo {
   margin-left: 8px;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border: 2px solid var(--pink);
   border-radius: 30px;
+}
+
+.logoutButton {
+  position: absolute;
+  z-index: -1;
+
+  top: 50%;
+  left: 0;
+  height: 0%;
+  width: 100%;
+  border-radius: 0 0 18px 18px;
+  background-color: #f0f0f0;
+  opacity: .8;
+
+  transition-duration: .15s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.logoutButtonText {
+  position: absolute;
+  bottom: 0;
+  height: 80%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
 }

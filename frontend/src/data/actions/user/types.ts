@@ -1,10 +1,8 @@
-import type { BaseAction } from '@data/types/actions';
-import type { UserData } from '@types';
-import { SET_USER } from './actions';
+import { LOGOUT } from './actions';
 
-export interface SetUserAction extends BaseAction<typeof SET_USER> {
-  user: UserData;
-}
+import type { BaseAction } from '@data/types/actions';
+
+export type LogoutAction = BaseAction<typeof LOGOUT>;
 
 export type ActionTypes =
-  | SetUserAction;
+  | LogoutAction;

@@ -1,0 +1,1 @@
+export { selectVkOauthData } from './selectVkOauthData';

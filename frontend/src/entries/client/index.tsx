@@ -1,8 +1,8 @@
 import { render, hydrate } from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from '@app';
-
 
 import { createStore } from '@data/store';
 import { initClientState } from '@data/store/initClientState';
@@ -19,7 +19,9 @@ DOMReady.then(async () => {
 
   const app = (
     <BrowserRouter>
-      <App store={store} />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   );
 

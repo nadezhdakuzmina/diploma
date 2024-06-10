@@ -1,12 +1,9 @@
 import type {
-  SetUserAction,
+  LogoutAction,
 } from './types';
 
-import { SET_USER } from './actions';
+import { LOGOUT } from './actions';
 
-import type { UserData } from '@types';
-
-export const setUserAction = (user: UserData): SetUserAction => ({
-  type: SET_USER,
-  user,
+export const logoutAction = (): LogoutAction => ({
+  type: LOGOUT,
 });

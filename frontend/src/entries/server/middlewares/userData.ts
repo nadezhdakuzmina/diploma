@@ -3,7 +3,7 @@ import { User } from '@api';
 import type { Request, Response } from '@types';
 import type { NextFunction } from 'express';
 
-export const authMiddleware = async (req: Request, _: Response, next: NextFunction) => {
+export const userDataMiddleware = async (req: Request, _: Response, next: NextFunction) => {
   const headers: Record<string, string> = {};
 
   for (let i = 0; i < req.rawHeaders.length; i += 2) {

@@ -2,6 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { discoverProjectStyles, getCriticalStyles } from 'used-styles';
 import { Helmet } from 'react-helmet';
+import { Provider } from 'react-redux';
 
 import App from '@app';
 
@@ -24,7 +25,9 @@ export const ssr = async (req: Request, res: Response) => {
   const helmet = Helmet.renderStatic();
   const appHTML = renderToString(
     <StaticRouter location={req.url}>
-      <App store={store} />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </StaticRouter>
   );
 

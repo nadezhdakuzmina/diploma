@@ -6,7 +6,7 @@ export const getAppData = async (req: Request, res: Response) => {
   res.json({
     vkOauth: {
       appId: VK_APP_ID,
-      redirectUri: '/api/user/oauth',
+      redirectUri: '/api/users/oauth',
     },
   });
 };

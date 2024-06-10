@@ -1,5 +1,7 @@
 import { getUserData } from './getUserData';
+import { logout } from './logout';
 
 export default {
-  getUserData
+  getUserData,
+  logout,
 };

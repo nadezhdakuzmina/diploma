@@ -1,5 +1,7 @@
-import { authMiddleware } from './auth';
+import { userDataMiddleware } from './userData';
+import { appDataMiddleware } from './appData';
 
 export const ssrMiddlewares = [
-  authMiddleware,
+  userDataMiddleware,
+  appDataMiddleware,
 ];
