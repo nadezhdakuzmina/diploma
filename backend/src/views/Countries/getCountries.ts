@@ -6,6 +6,7 @@ export const getCountries = async (req: Request, res: Response) => {
   const countries = await Country.find({
     relations: {
       logo: true,
+      tags: true,
     },
   });
 

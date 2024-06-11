@@ -8,6 +8,8 @@ import {
   RelationId,
   OneToMany,
   OneToOne,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 import { City } from '@entities/City';
@@ -81,7 +83,8 @@ class Service extends BaseEntity {
   @OneToMany(() => Comment, (comment) => comment.service)
   comments: Comment[];
 
-  @OneToMany(() => Tag, (tag) => tag.service)
+  @ManyToMany(() => Tag)
+  @JoinTable()
   tags: Tag[];
 }
 

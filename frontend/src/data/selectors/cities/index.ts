@@ -1,0 +1,1 @@
+export { selectCities } from './selectCities';

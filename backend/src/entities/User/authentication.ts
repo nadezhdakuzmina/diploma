@@ -21,10 +21,10 @@ export const authenticateAdmin = async (
 
   const hashedPassword = await hashPassword(password);
 
-  const usersCount = await User.count();
+  const adminsCount = await User.countBy({ role: Role.Admin });
 
-  // Если нет пользователей, то пускаем первого
-  if (!usersCount) {
+  // Если нет админов, то пускаем первого
+  if (!adminsCount) {
     return {
       email: '@TEST_USER@',
     };

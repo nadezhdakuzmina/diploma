@@ -4,7 +4,7 @@ import cn from 'classnames';
 import S from './styles.scss';
 import { Link } from 'react-router-dom';
 
-type Crumb = {
+export type Crumb = {
   text: string;
   link: string;
 };
@@ -18,7 +18,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = (props) => {
   return (
     <div className={cn(S.root, props.className)}>
       {props.crumbs.map((crumb, index) => (
-        <>
+        <React.Fragment key={crumb.link}>
           {index > 0 ? (
             <span
               key={crumb.text + 'before'}
@@ -34,7 +34,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = (props) => {
           >
             {crumb.text}
           </Link>
-        </>
+        </React.Fragment>
       ))}
     </div>
   );

@@ -6,6 +6,8 @@ import CommentDialog from '@components/CommentDialog';
 import TagInput from '@components/TagInput';
 import ThreadCard from '@components/ThreadCard';
 
+import { useBreadcrumbs } from '@hooks/useBreadcrumbs';
+
 import S from './styles.scss';
 
 const Treads: React.FC = () => {
@@ -16,26 +18,14 @@ const Treads: React.FC = () => {
     setCommentFormActive(event.target.value.length > 0);
   }, []);
 
+  const breadcrumbs = useBreadcrumbs({
+    name: 'Треды',
+    tag: 'threads',
+  });
+
   return (
     <ContentWrapper className={S.root}>
-      <Breadcrumbs className={S.breadcrumbs} crumbs={[
-        {
-          link: '/',
-          text: 'Главная',
-        },
-        {
-          link: '/country/turkey',
-          text: 'Турция',
-        },
-        {
-          link: '/country/turkey/city/instanbul',
-          text: 'Стамбул',
-        },
-        {
-          link: '/country/turkey/city/instanbul#threads',
-          text: 'Треды',
-        },
-      ]} />
+      <Breadcrumbs className={S.breadcrumbs} crumbs={breadcrumbs} />
       <div className={S.commentForm}>
         {isCommentFormActive && (
           <TagInput className={S.tagInput} label="Теги" onTagsChange={console.log} />

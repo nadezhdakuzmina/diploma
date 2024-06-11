@@ -8,6 +8,8 @@ import {
   RelationId,
   OneToMany,
   BeforeInsert,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 import { City } from '@entities/City';
@@ -73,7 +75,8 @@ class Thread extends BaseEntity {
   @OneToMany(() => Reaction, (reaction) => reaction.thread)
   reactions: Reaction[];
 
-  @OneToMany(() => Tag, (tag) => tag.thread)
+  @ManyToMany(() => Tag)
+  @JoinTable()
   tags: Tag[];
 
   @BeforeInsert()

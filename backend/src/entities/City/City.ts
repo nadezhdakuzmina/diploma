@@ -8,13 +8,18 @@ import {
   RelationId,
   OneToMany,
   OneToOne,
+  ManyToMany,
+  JoinTable,
+  BeforeInsert,
 } from 'typeorm';
+import slug from 'slug';
 
 import { Country } from '@entities/Country';
 import { MapPoint } from '@entities/MapPoint';
 import { Thread } from '@entities/Thread';
 import { Service } from '@entities/Service';
 import { Image } from '@entities/Image';
+import { Tag } from '@entities/Tag';
 
 @Entity({ name: 'city' })
 class City extends BaseEntity {
@@ -26,6 +31,9 @@ class City extends BaseEntity {
 
   @Column()
   description: string;
+
+  @Column({ unique: true })
+  slug: string;
 
   /** LOGO REALATION  */
   @OneToOne(() => Image, {
@@ -60,6 +68,15 @@ class City extends BaseEntity {
 
   @OneToMany(() => Service, (service) => service.city)
   services: Service[];
+
+  @ManyToMany(() => Tag)
+  @JoinTable()
+  tags: Tag[];
+
+  @BeforeInsert()
+  setSlug() {
+    this.slug ||= slug(this.name);
+  }
 }
 
 export default City;

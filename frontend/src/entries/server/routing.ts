@@ -2,7 +2,7 @@ import express from 'express';
 
 import { ssr } from './ssr';
 import { STATIC_PATH } from '@constants';
-import { ssrMiddlewares } from './middlewares';
+import { ssrMiddlewares } from '../../middlewares';
 
 export const mainRouter = express.Router();
 

@@ -8,6 +8,7 @@ import {
   RelationId,
   OneToMany,
   ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 import { City } from '@entities/City';
@@ -63,7 +64,8 @@ class MapPoint extends BaseEntity {
   @OneToMany(() => Comment, (comment) => comment.point)
   comments: Comment[];
 
-  @OneToMany(() => Tag, (tag) => tag.point)
+  @ManyToMany(() => Tag)
+  @JoinTable()
   tags: Tag[];
 }
 

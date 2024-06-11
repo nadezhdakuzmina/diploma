@@ -7,12 +7,17 @@ import {
   OneToOne,
   JoinColumn,
   RelationId,
+  BeforeInsert,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
+import slug from 'slug';
 
 import { City } from '@entities/City';
 import { Thread } from '@entities/Thread';
 import { Service } from '@entities/Service';
 import { Image } from '@entities/Image';
+import { Tag } from '@entities/Tag';
 
 @Entity({ name: 'country' })
 class Country extends BaseEntity {
@@ -24,6 +29,9 @@ class Country extends BaseEntity {
 
   @Column()
   description: string;
+
+  @Column({ unique: true })
+  slug: string;
 
   /** LOGO REALATION  */
   @OneToOne(() => Image, {
@@ -45,6 +53,15 @@ class Country extends BaseEntity {
 
   @OneToMany(() => Service, (service) => service.country)
   services: Service[];
+
+  @ManyToMany(() => Tag)
+  @JoinTable()
+  tags: Tag[];
+
+  @BeforeInsert()
+  setSlug() {
+    this.slug ||= slug(this.name);
+  }
 }
 
 export default Country;

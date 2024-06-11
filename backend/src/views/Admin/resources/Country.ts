@@ -11,8 +11,8 @@ export const CountryResouce = {
         showInDrawer: true,
       },
     },
-    listProperties: ['id', 'name', 'description', 'logoId'],
-    showProperties: ['id', 'name', 'description', 'logoId'],
-    editProperties: ['name', 'description', 'logoId'],
+    listProperties: ['id', 'name', 'description', 'logoId', 'slug'],
+    showProperties: ['id', 'name', 'description', 'logoId', 'slug'],
+    editProperties: ['name', 'description', 'logoId', 'slug'],
   },
 };

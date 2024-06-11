@@ -11,8 +11,8 @@ export const TagResouce = {
         showInDrawer: true,
       },
     },
-    listProperties: ['id', 'name', 'pointId', 'threadId', 'serviceId'],
-    showProperties: ['id', 'name', 'pointId', 'threadId', 'serviceId'],
-    editProperties: ['name', 'pointId', 'threadId', 'serviceId'],
+    listProperties: ['id', 'name'],
+    showProperties: ['id', 'name'],
+    editProperties: ['name'],
   },
 };

@@ -1,3 +1,3 @@
-import { UserData } from '@types';
+import type { UserState } from './types';
 
-export const defaultState: UserData | null = null;
+export const defaultState: UserState | null = null;

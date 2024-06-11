@@ -4,6 +4,8 @@ import ContentWrapper from '@components/ContentWrapper';
 import ServiceCard from '@components/ServiceCard';
 import Breadcrumbs from '@components/Breadcrumbs';
 
+import { useBreadcrumbs } from '@hooks/useBreadcrumbs';
+
 import S from './styles.scss';
 
 const CARDS = [
@@ -59,26 +61,14 @@ const CARDS = [
 ]
 
 const Services: React.FC = () => {
+  const breadcrumbs = useBreadcrumbs({
+    name: 'Сервисы',
+    tag: 'services',
+  });
+
   return (
     <ContentWrapper className={S.root}>
-      <Breadcrumbs className={S.breadcrumbs} crumbs={[
-        {
-          link: '/',
-          text: 'Главная',
-        },
-        {
-          link: '/country/turkey',
-          text: 'Турция',
-        },
-        {
-          link: '/country/turkey/city/instanbul',
-          text: 'Стамбул',
-        },
-        {
-          link: '/country/turkey/city/instanbul#services',
-          text: 'Сервисы',
-        },
-      ]} />
+      <Breadcrumbs className={S.breadcrumbs} crumbs={breadcrumbs} />
       <div className={S.content}>
         {CARDS.map((item) => (
           <ServiceCard
