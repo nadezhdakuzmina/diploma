@@ -4,6 +4,7 @@ import { defaultState as defaultCountriesState } from '@data/entities/countries'
 import { defaultState as defaultCitiesState } from '@data/entities/cities';
 import { defaultState as defaultThreadsState } from '@data/entities/threads';
 import { defaultState as defaultReactionsState } from '@data/entities/reactions';
+import { defaultState as defaultPointsState } from '@data/entities/points';
 
 import type { State } from '../types';
 
@@ -15,5 +16,6 @@ export const initClientState = (): State => {
     cities: defaultCitiesState,
     threads: defaultThreadsState,
     reactions: defaultReactionsState,
+    points: defaultPointsState,
   };
 };

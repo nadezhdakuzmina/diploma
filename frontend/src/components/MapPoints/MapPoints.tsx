@@ -5,15 +5,15 @@ import { type Map as MBoxMap, Marker } from 'mapbox-gl';
 import MapPoint from '@components/MapPoint';
 
 export type PointData = {
-  id: string;
+  id: number;
   point: [number, number];
   image: string;
   name: string;
 }
 
 type MapPointsProps = {
-  selectedPoint?: string;
-  onSelect?: (id: string) => void;
+  selectedPoint?: number;
+  onSelect?: (id: number) => void;
   points: PointData[];
   map: MBoxMap;
 };

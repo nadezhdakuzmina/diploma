@@ -4,6 +4,7 @@ import { dataSourceMiddlewares } from '@root/application/Database';
 import { baseMiddlewares } from './base';
 import { setCookieMiddlewares } from './setCookie';
 import { cookiesMiddlewares } from './cookies';
+import { authMiddleware } from './auth';
 
 export const commonMiddlewares = [
   json({ limit: '50mb' }),
@@ -16,4 +17,5 @@ export const commonMiddlewares = [
   dataSourceMiddlewares,
   baseMiddlewares,
   setCookieMiddlewares,
+  authMiddleware,
 ];

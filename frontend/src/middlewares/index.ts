@@ -15,3 +15,4 @@ export const ssrMiddlewares = [
 export * from './countries';
 export * from './cities';
 export * from './threads';
+export * from './points';

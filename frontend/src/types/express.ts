@@ -10,6 +10,7 @@ import type { Country } from './countries';
 import type { City } from './cities';
 import type { Thread } from './threads';
 import type { ReactionRecord } from './reactions';
+import { Point } from './points';
 
 export interface Request extends ExpressRequest {
   userData: UserData | null;
@@ -19,6 +20,7 @@ export interface Request extends ExpressRequest {
   cities: City[];
   currentCity: City;
   threads: Thread[];
+  points: Point[];
   reactions: ReactionRecord;
   headers: Record<string, string>;
   routerParams?: Record<string, string>;

@@ -1,9 +1,11 @@
+import { MapPoint } from '@entities/MapPoint';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   BaseEntity,
   BeforeInsert,
+  ManyToMany,
 } from 'typeorm';
 
 @Entity({ name: 'image' })
@@ -16,6 +18,9 @@ class Image extends BaseEntity {
 
   @Column({ type: 'timestamptz', nullable: true })
   date: Date;
+
+  @ManyToMany(() => MapPoint, (point) => point.images)
+  points: MapPoint[];
 
   @BeforeInsert()
   setCreationDate() {

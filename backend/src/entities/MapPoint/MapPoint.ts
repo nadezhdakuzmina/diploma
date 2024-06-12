@@ -17,6 +17,17 @@ import { Tag } from '@entities/Tag';
 import { Image } from '@entities/Image';
 import { User } from '@entities/User';
 
+export enum PointCategory {
+  Popular = 'Popular',
+  Nature = 'Nature',
+  Beaches = 'Beaches',
+  Insta = 'Insta',
+  Hotels = 'Hotels',
+  Restorans = 'Restorans',
+  Locals = 'Locals',
+  NotPopular = 'NotPopular',
+}
+
 @Entity({ name: 'map_point' })
 class MapPoint extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -28,11 +39,17 @@ class MapPoint extends BaseEntity {
   @Column()
   description: string;
 
+  @Column({ enum: PointCategory })
+  type: PointCategory;
+
   @Column()
   lng: number;
 
   @Column()
   lat: number;
+
+  @Column({ default: false })
+  moderated: boolean;
 
   /** USER REALATION  */
   @ManyToOne(() => User, (user) => user.points, {
@@ -58,7 +75,12 @@ class MapPoint extends BaseEntity {
   cityId: number;
   /** /CITY REALATION  */
 
-  @ManyToMany(() => Image)
+  @ManyToMany(() => Image, (image) => image.points)
+  @JoinTable({
+    name: 'point_images',
+    joinColumn: { name: 'point_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'image_id', referencedColumnName: 'id' },
+  })
   images: Image[];
 
   @OneToMany(() => Comment, (comment) => comment.point)

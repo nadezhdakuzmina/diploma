@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
 import Header from '@components/Header';
@@ -16,6 +16,11 @@ import { loadCurrentCountryThunk } from '@data/thunk/countries';
 import { unsetCurrentCountryAction } from '@data/actions/countries';
 import { loadThreadsThunk } from '@data/thunk/threads';
 import { flushThreadsAction } from '@data/actions/threads';
+import { loadPointsThunk } from '@data/thunk/points';
+import { flushPointsAction } from '@data/actions/points';
+import { selectCurrentCity } from '@data/selectors/cities';
+
+import { PointCategory } from '@types';
 
 const MAP_TAB_ID = 'map';
 const THREADS_TAB_ID = 'threads';
@@ -24,7 +29,7 @@ const SERVICES_TAB_ID = 'services';
 const PAGE_TABS = [
   {
     id: MAP_TAB_ID,
-    value: 'Карта'
+    value: 'Места'
   },
   {
     id: THREADS_TAB_ID,
@@ -44,6 +49,8 @@ type CityPageParams = {
 const City: React.FC = () => {
   const dispatch = useDispatch();
   const { city, country } = useParams() as CityPageParams;
+  
+  const currentCity = useSelector(selectCurrentCity);
 
   React.useEffect(() => {
     dispatch(loadCurrentCityThunk(city));
@@ -56,6 +63,18 @@ const City: React.FC = () => {
       dispatch(flushThreadsAction());
     };
   }, [city, dispatch]);
+
+  React.useEffect(() => {
+    if (!currentCity) {
+      return;
+    }
+
+    dispatch(loadPointsThunk(PointCategory.Popular));
+
+    return () => {
+      dispatch(flushPointsAction());
+    };
+  }, [currentCity]);
 
   return (
     <PageWrapper>

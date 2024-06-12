@@ -8,6 +8,7 @@ import {
   currentCountryMiddleware,
   currentCityMiddleware,
   threadsMiddleware,
+  pointsMiddleware,
 } from '@root/middlewares';
 
 import type { ExtendedRouteObject } from './types';
@@ -37,6 +38,7 @@ export const routes: ExtendedRouteObject[] = [
       currentCountryMiddleware,
       currentCityMiddleware,
       threadsMiddleware,
+      pointsMiddleware,
     ]
   },
 ];

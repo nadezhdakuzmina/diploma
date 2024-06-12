@@ -42,6 +42,12 @@ class City extends BaseEntity {
   @JoinColumn({ name: 'logo_id' })
   logo: Image;
 
+  @Column({ nullable: false })
+  lng: number;
+
+  @Column({ nullable: false })
+  lat: number;
+
   @RelationId((city: City) => city.logo)
   @Column({ name: 'logo_id', nullable: true })
   logoId: number;

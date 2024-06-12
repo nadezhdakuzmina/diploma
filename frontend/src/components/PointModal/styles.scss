@@ -18,6 +18,11 @@
 }
 
 .title {
+  margin-top: 24px;
+}
+
+.title,
+.commentTitle {
   font-size: 23px;
   line-height: 30px;
   font-weight: 700;
@@ -32,7 +37,6 @@
 
 .tags {
   margin-top: 16px;
-  margin-bottom: 24px;
 }
 
 .comments {

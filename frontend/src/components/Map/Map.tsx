@@ -56,7 +56,7 @@ const Map: React.FC<MapProps> = (props) => {
         attributionControl: false,
       })
     );
-  }, [containerElement]);
+  }, [containerElement, props.centerPoint]);
 
   return (
     <div

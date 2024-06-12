@@ -4,3 +4,4 @@ export { default as Countries } from './coutries';
 export { default as Cities } from './cities';
 export { default as Threads } from './threads';
 export { default as Reactions } from './reactions';
+export { default as Points } from './points';

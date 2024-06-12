@@ -6,5 +6,7 @@ export type City = {
   description: string;
   logo: Image;
   slug: string;
+  lng: number;
+  lat: number;
 };
   
