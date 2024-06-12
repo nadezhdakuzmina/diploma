@@ -8,6 +8,7 @@ import type { UserData } from './user';
 import type { AppData } from './common';
 import type { Country } from './countries';
 import type { City } from './cities';
+import type { Thread } from './threads';
 
 export interface Request extends ExpressRequest {
   userData: UserData | null;
@@ -16,6 +17,7 @@ export interface Request extends ExpressRequest {
   currentCountry: Country;
   cities: City[];
   currentCity: City;
+  threads: Thread[];
   routerParams?: Record<string, string>;
 }
 

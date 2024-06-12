@@ -33,11 +33,11 @@ const PointModal: React.FC<PointModalProps> = (props) => {
           <span className={S.commentsCounter}>5</span>
         </h2>
         <div className={S.list}>
-          <Comment className={S.comment} name="Marina" text="Там пахнет вкусно!" date="Вчера" />
+          {/* <Comment className={S.comment} name="Marina" text="Там пахнет вкусно!" date="Вчера" />
           <Comment className={S.comment} name="Lisa" text="Кушали с подругой, остались довольны" date="Вчера" />
           <Comment className={S.comment} name="Marina" text="Круасаны продают на той же улице, пышные и вкусные" date="Вчера" />
           <Comment className={S.comment} name="Lisa" text="Спасибо!" date="Вчера" />
-          <Comment className={S.comment} name="Bobik" text="Там есть вкусный кофе?" date="Вчера" />
+          <Comment className={S.comment} name="Bobik" text="Там есть вкусный кофе?" date="Вчера" /> */}
         </div>
         <CommentDialog buttonText='Отправить' className={S.commentDialog} />
       </div>

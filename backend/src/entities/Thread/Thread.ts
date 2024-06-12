@@ -75,8 +75,12 @@ class Thread extends BaseEntity {
   @OneToMany(() => Reaction, (reaction) => reaction.thread)
   reactions: Reaction[];
 
-  @ManyToMany(() => Tag)
-  @JoinTable()
+  @ManyToMany(() => Tag, (tag) => tag.threads)
+  @JoinTable({
+    name: 'thread_tags',
+    joinColumn: { name: 'thread_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'tag_id', referencedColumnName: 'id' },
+  })
   tags: Tag[];
 
   @BeforeInsert()

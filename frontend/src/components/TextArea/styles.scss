@@ -2,6 +2,14 @@
   width: 100%;
 }
 
+.wrapper:hover {
+  background-color: hsl(240 5.88% 90%/.7);
+}
+
+.wrapper.active {
+  background-color: #fff;
+}
+
 .wrapper {
   border-radius: 14px;
   padding: 16px 16px;
@@ -10,14 +18,14 @@
   transition-duration: .15s;
   width: 100%;
   cursor: text;
-}
 
-.wrapper:hover {
-  background-color: hsl(240 5.88% 90%/.7);
-}
+  &.disabled {
+    background-color: hsl(240 5.88% 90%/.5);
 
-.wrapper.active {
-  background-color: #fff;
+    .textArea {
+      opacity: .3;
+    }
+  }
 }
 
 .label {

@@ -24,7 +24,7 @@ class Reaction extends BaseEntity {
   id: number;
 
   @Column({ enum: ReactionType })
-  role: ReactionType;
+  type: ReactionType;
 
   @Column({ type: 'timestamptz', nullable: true })
   date: Date;

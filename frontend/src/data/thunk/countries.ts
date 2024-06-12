@@ -2,7 +2,7 @@ import { Countries } from '@api';
 
 import { setCountriesAction, setCurrentCountryAction } from '@data/actions/countries';
 import { selectCountries } from '@data/selectors/countries';
-import { selectCurrentCountry } from '@data/selectors/countries/selectCurrentCountry';
+import { selectCurrentCountry } from '@data/selectors/countries';
 
 import type { State } from '@data/types';
 import type { ThunkActionDispatch } from 'redux-thunk';

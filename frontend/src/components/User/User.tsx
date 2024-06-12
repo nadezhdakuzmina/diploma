@@ -9,6 +9,7 @@ import { logoutThunk } from '@data/thunk/user';
 import S from './styles.scss';
 
 import type { UserData } from '@types';
+import { getShortUserName } from '@utils/getShortUserName';
 
 type UserProps = {
   className?: string;
@@ -16,7 +17,7 @@ type UserProps = {
 };
 
 const User: React.FC<UserProps> = (props) => {
-  const { firstName, lastName, photo } = props.userData;
+  const { photo } = props.userData;
 
   const dispatch = useDispatch();
 
@@ -25,8 +26,8 @@ const User: React.FC<UserProps> = (props) => {
   }, [dispatch]);
 
   const shortName = React.useMemo(() => {
-    return `${firstName} ${lastName[0]}.`;
-  }, [firstName, lastName]);
+    return getShortUserName( props.userData);
+  }, [ props.userData]);
 
   return (
     <div className={cn(S.root, props.className)}>

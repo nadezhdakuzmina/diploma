@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import { Thread } from '@entities/Thread';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  ManyToMany,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity({ name: 'tag' })
 class Tag extends BaseEntity {
@@ -7,6 +15,9 @@ class Tag extends BaseEntity {
 
   @Column()
   name: string;
+
+  @ManyToMany(() => Thread, (thread) => thread.tags)
+  threads: Thread[];
 }
 
 export default Tag;

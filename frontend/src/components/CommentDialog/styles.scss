@@ -38,6 +38,10 @@
   color: #fff;
   fill: #fff;
   font-weight: 700;
+
+  &.disabled {
+    opacity: .3;
+  }
 }
 
 .icon {

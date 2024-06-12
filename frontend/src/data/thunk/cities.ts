@@ -2,7 +2,7 @@ import { Cities } from '@api';
 
 import { setCitiesAction, setCurrentCityAction } from '@data/actions/cities';
 import { selectCities } from '@data/selectors/cities';
-import { selectCurrentCity } from '@data/selectors/cities/selectCurrentCity';
+import { selectCurrentCity } from '@data/selectors/cities';
 
 import type { State } from '@data/types';
 import type { ThunkActionDispatch } from 'redux-thunk';

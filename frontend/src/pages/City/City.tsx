@@ -14,6 +14,8 @@ import { loadCurrentCityThunk } from '@data/thunk/cities';
 import { unsetCurrentCityAction } from '@data/actions/cities';
 import { loadCurrentCountryThunk } from '@data/thunk/countries';
 import { unsetCurrentCountryAction } from '@data/actions/countries';
+import { loadThreadsThunk } from '@data/thunk/threads';
+import { flushThreadsAction } from '@data/actions/threads';
 
 const MAP_TAB_ID = 'map';
 const THREADS_TAB_ID = 'threads';
@@ -46,10 +48,12 @@ const City: React.FC = () => {
   React.useEffect(() => {
     dispatch(loadCurrentCityThunk(city));
     dispatch(loadCurrentCountryThunk(country));
+    dispatch(loadThreadsThunk(country, city));
 
     return () => {
       dispatch(unsetCurrentCityAction());
       dispatch(unsetCurrentCountryAction());
+      dispatch(flushThreadsAction());
     };
   }, [city, dispatch]);
 

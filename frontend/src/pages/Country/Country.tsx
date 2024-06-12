@@ -13,6 +13,8 @@ import { loadCurrentCountryThunk } from '@data/thunk/countries';
 import { unsetCurrentCountryAction } from '@data/actions/countries';
 import { loadCitiesThunk } from '@data/thunk/cities';
 import { flushCitiesAction } from '@data/actions/cities';
+import { loadThreadsThunk } from '@data/thunk/threads';
+import { flushThreadsAction } from '@data/actions/threads';
 
 const CITIES_TAB_ID = 'cities';
 const THREADS_TAB_ID = 'threads';
@@ -44,10 +46,12 @@ const Country: React.FC = () => {
   React.useEffect(() => {
     dispatch(loadCurrentCountryThunk(country));
     dispatch(loadCitiesThunk(country));
+    dispatch(loadThreadsThunk(country, null));
 
     return () => {
       dispatch(unsetCurrentCountryAction());
       dispatch(flushCitiesAction());
+      dispatch(flushThreadsAction());
     };
   }, [country, dispatch]);
 

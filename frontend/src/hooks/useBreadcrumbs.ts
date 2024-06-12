@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import { selectCurrentCountry } from '@data/selectors/countries/selectCurrentCountry';
-import { selectCurrentCity } from '@data/selectors/cities/selectCurrentCity';
+import { selectCurrentCountry } from '@data/selectors/countries';
+import { selectCurrentCity } from '@data/selectors/cities';
 import { getCountryUrl } from '@utils/getCountryUrl';
 import { getCityUrl } from '@utils/getCityUrl';
 

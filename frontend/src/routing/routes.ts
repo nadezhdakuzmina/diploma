@@ -7,9 +7,10 @@ import {
   citiesMiddleware,
   currentCountryMiddleware,
   currentCityMiddleware,
+  threadsMiddleware,
 } from '@root/middlewares';
 
-import { ExtendedRouteObject } from './types';
+import type { ExtendedRouteObject } from './types';
 
 export const routes: ExtendedRouteObject[] = [
   {
@@ -17,6 +18,7 @@ export const routes: ExtendedRouteObject[] = [
     Component: Main,
     middlewares: [
       countriesMiddleware,
+      threadsMiddleware,
     ],
   },
   {
@@ -25,6 +27,7 @@ export const routes: ExtendedRouteObject[] = [
     middlewares: [
       currentCountryMiddleware,
       citiesMiddleware,
+      threadsMiddleware,
     ],
   },
   {
@@ -33,6 +36,7 @@ export const routes: ExtendedRouteObject[] = [
     middlewares: [
       currentCountryMiddleware,
       currentCityMiddleware,
+      threadsMiddleware,
     ]
   },
 ];

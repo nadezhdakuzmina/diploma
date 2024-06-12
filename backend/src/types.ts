@@ -1,3 +1,4 @@
+import { User } from '@entities/User';
 import type { SetCookieParams } from '@utils/setCookie';
 import type {
   Request as ExpressRequest,
@@ -10,6 +11,7 @@ export interface Request extends ExpressRequest {
   apiBaseUrl: string;
   domainName: string;
   cookies: Record<string, string>;
+  authUser?: User;
 }
 
 export interface Response extends ExpressResponse {

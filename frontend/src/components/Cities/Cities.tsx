@@ -6,7 +6,7 @@ import PlaceCard from '@components/PlaceCard';
 import Breadcrumbs from '@components/Breadcrumbs';
 
 import { selectCities } from '@data/selectors/cities';
-import { selectCurrentCountry } from '@data/selectors/countries/selectCurrentCountry';
+import { selectCurrentCountry } from '@data/selectors/countries';
 import { getCityUrl } from '@utils/getCityUrl';
 import { useBreadcrumbs } from '@hooks/useBreadcrumbs';
 

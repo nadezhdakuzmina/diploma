@@ -11,6 +11,8 @@ import Threads from '@components/Threads';
 
 import { loadCountriesThunk } from '@data/thunk/countries';
 import { flushCountriesAction } from '@data/actions/countries';
+import { loadThreadsThunk } from '@data/thunk/threads';
+import { flushThreadsAction } from '@data/actions/threads';
 
 const COUNTRIES_TAB_ID = 'countries';
 const THREADS_TAB_ID = 'threads';
@@ -36,10 +38,11 @@ const Main: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(loadCountriesThunk());
+    dispatch(loadThreadsThunk(null, null));
 
     return () => {
-      console.log('FLUSH countries');
       dispatch(flushCountriesAction());
+      dispatch(flushThreadsAction());
     };
   }, [dispatch]);
 
