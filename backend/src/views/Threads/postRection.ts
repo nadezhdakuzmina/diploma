@@ -9,7 +9,7 @@ type BodyParams = {
   type: ReactionType;
 };
 
-export const postLike = requireAuth(async (req: Request, res: Response) => {
+export const postRection = requireAuth(async (req: Request, res: Response) => {
   const { threadId, type } = req.body as BodyParams;
   const { authUser: user } = req;
 

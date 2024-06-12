@@ -17,37 +17,46 @@ export const getCities = async (req: Request, res: Response) => {
     });
   }
 
-  let cities: City[];
+  try {
+    let cities: City[];
 
-  if (countryId) {
-    cities = await City.find({
-      where: {
-        countryId,
-      },
-      relations: {
-        logo: true,
-        tags: true,
-      },
-    });
-  } else if (countrySlug) {
-    cities = await City.find({
-      where: {
-        country: {
-          slug: countrySlug,
+    if (countryId) {
+      cities = await City.find({
+        where: {
+          countryId,
         },
-      },
-      relations: {
-        logo: true,
-        tags: true,
-      },
+        relations: {
+          logo: true,
+          tags: true,
+        },
+      });
+    } else if (countrySlug) {
+      cities = await City.find({
+        where: {
+          country: {
+            slug: countrySlug,
+          },
+        },
+        relations: {
+          logo: true,
+          tags: true,
+        },
+      });
+    } else {
+      return res.status(400).json({
+        error: 'countryId or countrySlug not provided',
+      });
+    }
+
+    res.json({
+      cities,
     });
-  } else {
-    return res.status(400).json({
-      error: 'countryId or countrySlug not provided',
+  } catch (error) {
+    res.status(500).json({
+      error:
+        error instanceof Error
+          ? `${error.message} ${error.stack}`
+          : JSON.stringify(error),
     });
   }
-
-  res.json({
-    cities,
-  });
 };

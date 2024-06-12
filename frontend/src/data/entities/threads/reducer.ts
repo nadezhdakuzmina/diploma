@@ -3,6 +3,7 @@ import {
   SET_CURRENT_THREAD,
   SET_THREADS,
   UNSET_CURRENT_THREAD,
+  UPDATE_THREAD,
 } from '@data/actions/threads/actions';
 
 import { defaultState } from './defaultState';
@@ -22,6 +23,20 @@ export const reducer = (state = defaultState, action: ActionTypes): ThreadsState
       return {
         ...state,
         threads: action.threads,
+      };
+
+    case UPDATE_THREAD:
+      return {
+        ...state,
+        threads: state.threads?.reduce((acc, thread) => {
+          if (thread.id === action.thread.id) {
+            acc.push(action.thread);
+          } else {
+            acc.push(thread);
+          }
+
+          return acc;
+        }, []),
       };
 
     case SET_CURRENT_THREAD:

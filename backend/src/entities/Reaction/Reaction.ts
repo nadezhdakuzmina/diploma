@@ -33,6 +33,7 @@ class Reaction extends BaseEntity {
   @ManyToOne(() => User, (user) => user.reactions, {
     cascade: true,
     nullable: false,
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'user_id' })
   user: User;
@@ -46,6 +47,7 @@ class Reaction extends BaseEntity {
   @ManyToOne(() => Comment, (comment) => comment.reactions, {
     cascade: true,
     nullable: true,
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'comment_id' })
   comment: User;
@@ -59,6 +61,7 @@ class Reaction extends BaseEntity {
   @ManyToOne(() => Thread, (thread) => thread.reactions, {
     cascade: true,
     nullable: true,
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'thread_id' })
   thread: User;

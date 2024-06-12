@@ -17,6 +17,9 @@ DOMReady.then(async () => {
   const store = createStore(preloadedState);
   const rootElement = document.getElementById('root');
 
+  // @ts-expect-error
+  window.store = store;
+
   const app = (
     <BrowserRouter>
       <Provider store={store}>

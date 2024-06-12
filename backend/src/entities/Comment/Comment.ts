@@ -31,6 +31,7 @@ class Comment extends BaseEntity {
   @ManyToOne(() => User, (user) => user.comments, {
     cascade: true,
     nullable: false,
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'user_id' })
   user: User;
@@ -44,6 +45,7 @@ class Comment extends BaseEntity {
   @ManyToOne(() => MapPoint, (point) => point.comments, {
     cascade: true,
     nullable: true,
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'point_id' })
   point: MapPoint;
@@ -57,6 +59,7 @@ class Comment extends BaseEntity {
   @ManyToOne(() => Thread, (thread) => thread.comments, {
     cascade: true,
     nullable: true,
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'thread_id' })
   thread: Thread;
@@ -70,6 +73,7 @@ class Comment extends BaseEntity {
   @ManyToOne(() => Service, (service) => service.comments, {
     cascade: true,
     nullable: true,
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'service_id' })
   service: Service;

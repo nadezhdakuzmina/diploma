@@ -9,6 +9,7 @@ import CommentDialog from '@components/CommentDialog';
 import { loadCurrentThreadThunk, postThreadCommentThunk } from '@data/thunk/threads';
 import { unsetCurrentThreadAction } from '@data/actions/threads';
 import { selectCurrentThread } from '@data/selectors/threads';
+import { selectUserData } from '@data/selectors/user';
 
 import S from './styles.scss';
 
@@ -21,6 +22,7 @@ type ThreadModalProps = {
 const ThreadModal: React.FC<ThreadModalProps> = (props) => {
   const dispatch = useDispatch();
 
+  const userData = useSelector(selectUserData);
   const threadData = useSelector(selectCurrentThread);
   
   React.useEffect(() => {
@@ -41,7 +43,6 @@ const ThreadModal: React.FC<ThreadModalProps> = (props) => {
         <>
           <ThreadContent
             className={S.thread}
-            hideActivityCount
             thread={threadData}
           />
           <h2 className={S.commentsTitle}>
@@ -58,7 +59,13 @@ const ThreadModal: React.FC<ThreadModalProps> = (props) => {
               />
             ))}
           </div>
+          {!userData ? (
+              <span className={S.diabledText}>
+              Авторизуйтесь, чтобы оставить комментарий!
+              </span>
+          ) : null}
           <CommentDialog
+            disabled={!userData}
             className={S.commentDialog}
             onCommentSubmit={onCommentSubmit}
           />

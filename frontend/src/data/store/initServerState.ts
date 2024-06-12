@@ -3,6 +3,7 @@ import { initServerState as initAppDataServerState } from '@data/entities/appDat
 import { initServerState as initCountriesServerState } from '@data/entities/countries';
 import { initServerState as initCitiesServerState } from '@data/entities/cities';
 import { initServerState as initThreadsServerState } from '@data/entities/threads';
+import { initServerState as initReactionsServerState } from '@data/entities/reactions';
 
 import type { State } from '../types';
 import type { Request } from '@types';
@@ -14,5 +15,6 @@ export const initServerState = (req: Request): State => {
     countries: initCountriesServerState(req),
     cities: initCitiesServerState(req),
     threads: initThreadsServerState(req),
+    reactions: initReactionsServerState(req),
   };
 };

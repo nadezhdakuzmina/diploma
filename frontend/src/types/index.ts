@@ -7,3 +7,4 @@ export * from './countries';
 export * from './cities';
 export * from './threads';
 export * from './comments';
+export * from './reactions';

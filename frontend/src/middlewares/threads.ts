@@ -4,14 +4,18 @@ import type { Request, Response } from '@types';
 import type { NextFunction } from 'express';
 
 export const threadsMiddleware = async (req: Request, _: Response, next: NextFunction) => {
-  const countrySlug = req.currentCountry?.slug;
-  const citySlug = req.currentCity?.slug;
+  try{
+    const countrySlug = req.currentCountry?.slug;
+    const citySlug = req.currentCity?.slug;
 
-  const threads = citySlug
-    ? await Threads.getThreads(null, citySlug)
-    : await Threads.getThreads(countrySlug, null);
+    const threads = citySlug
+      ? await Threads.getThreads(null, citySlug)
+      : await Threads.getThreads(countrySlug, null);
 
-  req.threads = threads;
+    req.threads = threads;
+  } catch(error) {
+    console.error(error);
+  }
 
   next();
 };

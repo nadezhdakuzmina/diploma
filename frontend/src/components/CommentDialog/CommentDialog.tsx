@@ -25,21 +25,21 @@ const CommentDialog: React.FC<CommentDialogProps> = ({
   const handleSubmit = React.useCallback(() => {
     onCommentSubmit?.(textAreaRef.current.value);
     textAreaRef.current.value = '';
-  }, []);
+  }, [onCommentSubmit]);
 
   const keyupHandler = React.useCallback((event: KeyboardEvent) => {
     if (event.keyCode === 13) {
       handleSubmit();
     }
-  }, []);
+  }, [handleSubmit]);
 
   React.useEffect(() => {
     textAreaRef.current.addEventListener('keyup', keyupHandler);
 
     return () => {
-      textAreaRef.current.removeEventListener('keyup', keyupHandler);
+      textAreaRef.current?.removeEventListener('keyup', keyupHandler);
     };
-  }, []);
+  }, [keyupHandler]);
 
   return (
     <div className={cn(S.root, className)}>

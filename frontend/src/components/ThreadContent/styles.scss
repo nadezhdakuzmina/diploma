@@ -31,6 +31,10 @@
   color: #888;
 }
 
+.tags {
+  margin-top: 20px;
+}
+
 .text {
   margin-top: 24px;
   font-size: 16px;
@@ -59,6 +63,11 @@
 
 .activity + .activity {
   margin-left: 20px;
+}
+
+.activity.activeActivity .activityIcon {
+  fill: #e051d22d;
+  stroke: #e051d22d;
 }
 
 .activityIcon {

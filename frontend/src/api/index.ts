@@ -3,3 +3,4 @@ export { default as Common } from './common';
 export { default as Countries } from './coutries';
 export { default as Cities } from './cities';
 export { default as Threads } from './threads';
+export { default as Reactions } from './reactions';

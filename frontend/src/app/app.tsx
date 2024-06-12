@@ -1,16 +1,20 @@
 import * as VKID from '@vkid/sdk';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import * as React from 'react';
 
 import Routing from '@routing';
 
 import { selectVkOauthData } from '@data/selectors/appData';
+import { loadReactionsThunk } from '@data/thunk/reactions';
+import { loadUserDataThunk } from '@data/thunk/user';
 
 import '@assets/styles/common.scss';
 import '@assets/styles/variables.scss';
 
 const App: React.FC = () => {
+  const dispatch = useDispatch();
+
   const { appId, redirectUri } = useSelector(selectVkOauthData);
 
   React.useEffect(() => {
@@ -19,6 +23,11 @@ const App: React.FC = () => {
       redirectUrl: `http://localhost:9090${redirectUri}`,
     });
   }, [appId, redirectUri]);
+
+  React.useEffect(() => {
+    dispatch(loadReactionsThunk());
+    dispatch(loadUserDataThunk());
+  }, []);
 
   return (
     <>

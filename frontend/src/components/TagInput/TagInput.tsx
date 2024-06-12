@@ -8,12 +8,12 @@ import S from './styles.scss';
 type TagInputProps = {
   className?: string;
   label?: string;
+  tags: string[];
   onTagsChange?: (tags: string[]) => void;
 };
 
 const TagInput: React.FC<TagInputProps> = (props) => {
   const [value, setValue] = React.useState('');
-  const [tags, setTags] = React.useState<string[]>([]);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isActive, setActive] = React.useState(false);
@@ -44,24 +44,20 @@ const TagInput: React.FC<TagInputProps> = (props) => {
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = React.useCallback((event) => {
     if (event.keyCode === 13) {
-      setTags((tags) => [...tags, value.replace(/#+/, '')]);
+      props.onTagsChange?.([...props.tags, value.replace(/#+/, '')]);
       setValue('');
     }
 
     if (event.keyCode === 8 && value.length === 0) {
-      setTags((tags) => [...tags.slice(0, -1)]);
+      props.onTagsChange?.([...props.tags.slice(0, -1)]);
     }
-  }, [value]);
-
-  React.useEffect(() => {
-    props.onTagsChange?.(tags);
-  }, [tags]);
+  }, [value, props.tags, props.onTagsChange]);
 
   return (
     <div className={cn(S.root, props.className)}>
       {props.label && <label className={S.label}>{props.label}</label>}
       <div onClick={clickHandler} className={cn(S.wrapper, { [S.active]: isActive })}>
-        <Tags className={S.tags} tags={tags} />
+        <Tags className={S.tags} tags={props.tags} />
         <input
           ref={inputRef}
           className={S.input}

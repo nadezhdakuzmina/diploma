@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import TagInput from '@components/TagInput';
 import CommentDialog from '@components/CommentDialog';
@@ -7,9 +7,13 @@ import CommentDialog from '@components/CommentDialog';
 import { selectUserData } from '@data/selectors/user';
 
 import S from './styles.scss';
+import { postThreadThunk } from '@data/thunk/threads';
 
 const ThreadForm: React.FC = () => {
   const [isCommentFormActive, setCommentFormActive] = React.useState(false);
+  const [tags, setTags] = React.useState<string[]>([]);
+
+  const dispatch = useDispatch();
 
   const userData = useSelector(selectUserData);
 
@@ -17,6 +21,18 @@ const ThreadForm: React.FC = () => {
     // @ts-ignore
     setCommentFormActive(event.target.value.length > 0);
   }, []);
+
+  const handleTagsChange = React.useCallback((tags: string[]) => {
+    setTags(tags);
+  }, []);
+
+  const handleFormSubmit = React.useCallback((text: string) => {
+    console.log('inside', tags);
+    dispatch(postThreadThunk(text, tags));
+    setTags([]);
+  }, [tags, dispatch]);
+
+  console.log(tags);
 
   return (
     <div className={S.root}>
@@ -26,9 +42,18 @@ const ThreadForm: React.FC = () => {
             </span>
         ) : null}
         {isCommentFormActive && (
-            <TagInput className={S.tagInput} label="Теги" onTagsChange={console.log} />
+            <TagInput
+              tags={tags}
+              className={S.tagInput}
+              label="Теги"
+              onTagsChange={handleTagsChange}
+            />
         )}
-        <CommentDialog disabled={!userData} onChange={handleCommentDialogType} />
+        <CommentDialog
+          disabled={!userData}
+          onChange={handleCommentDialogType}
+          onCommentSubmit={handleFormSubmit}
+        />
     </div>
   );
 };

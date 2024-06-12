@@ -31,6 +31,7 @@ export const getThreads = async (req: Request, res: Response) => {
         'user.photo',
         'user.photo200',
       ])
+      .orderBy('thread.date', 'DESC')
       .where({
         ...(citySlug && { city: { slug: citySlug } }),
         ...(countrySlug && { country: { slug: countrySlug } }),

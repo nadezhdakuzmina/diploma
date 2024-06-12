@@ -1,11 +1,13 @@
 import { getThreads } from './getThreads';
 import { getThread } from './getThread';
 import { postComment } from './postComment';
-import { postLike } from './postLike';
+import { postRection } from './postRection';
+import { postThread } from './postThread';
 
 export default {
   getThreads,
   getThread,
   postComment,
-  postLike,
+  postRection,
+  postThread,
 };
