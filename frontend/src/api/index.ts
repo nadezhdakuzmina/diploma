@@ -7,3 +7,4 @@ export { default as Reactions } from './reactions';
 export { default as Points } from './points';
 export { default as Images } from './images';
 export { default as Search } from './search';
+export { default as Services } from './services';

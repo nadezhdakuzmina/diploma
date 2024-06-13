@@ -7,3 +7,4 @@ export { default as Threads } from './Threads';
 export { default as Reactions } from './Reactions';
 export { default as MapPoints } from './MapPoints';
 export { default as Search } from './Search';
+export { default as Services } from './Services';

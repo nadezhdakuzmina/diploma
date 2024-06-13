@@ -9,3 +9,4 @@ export * from './threads';
 export * from './comments';
 export * from './reactions';
 export * from './points';
+export * from './services';

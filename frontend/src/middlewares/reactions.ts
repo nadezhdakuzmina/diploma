@@ -18,9 +18,7 @@ export const reactionsMiddleware = async (req: Request, _: Response, next: NextF
   
   
     req.reactions = reactionsRecord;
-  } catch(error) {
-    console.error(error);
-  }
+  } catch(error) {}
 
   next();
 };

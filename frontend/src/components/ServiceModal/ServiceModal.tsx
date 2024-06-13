@@ -1,42 +1,86 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Modal from '@components/Modal';
 import Tags from '@components/Tags';
 import Comment from '@components/Comment';
 import CommentDialog from '@components/CommentDialog';
 
+import { selectUserData } from '@data/selectors/user';
+import { selectCurrentService } from '@data/selectors/services';
+
 import S from './styles.scss';
+import { loadCurrentServiceThunk, postServiceCommentThunk } from '@data/thunk/services';
+import { unsetCurrentServiceAction } from '@data/actions/services';
 
 type ServiceModalProps = {
+  id: number;
   onClose: () => void;
 };
 
 const ServiceModal: React.FC<ServiceModalProps> = (props) => {
+  const dispatch = useDispatch();
+
+  const userData = useSelector(selectUserData);
+  const threadData = useSelector(selectCurrentService);
+
+  React.useEffect(() => {
+    dispatch(loadCurrentServiceThunk(props.id));
+
+    return () => {
+      dispatch(unsetCurrentServiceAction());
+    };
+  }, [props.id, dispatch]);
+
+  const onCommentSubmit = React.useCallback((text: string) => {
+    dispatch(postServiceCommentThunk(props.id, text));
+  }, [props.id]);
+
   return (
     <Modal className={S.root} onClose={props.onClose}>
-      <div className={S.content}>
-        <div
-          className={S.image}
-          style={{ backgroundImage: `url(${'https://avatars.dzeninfra.ru/get-zen_doc/9804207/pub_6481ed3a6094ff55e8a9520c_6481edf01dfacb4481da756c/scale_1200'})` }}
-        />
-        <Tags
-          className={S.tags}
-          tags={['транспорт', 'такси']}
-        />
-        <h2 className={S.title}>Uber</h2>
-        <span className={S.description}>Сервис такси. Можно заказать такси в любом месте и в любое время. Пожалуй самый удобный вариант для этого города. Цены конечно кусаются =)</span>
-      </div>
-      <div className={S.comments}>
-        <h2 className={S.title}>
-          Комментарии
-          <span className={S.commentsCounter}>2</span>
-        </h2>
-        <div className={S.list}>
-          <Comment className={S.comment} name="Marina" text="Такси 5 звезд!" date="Вчера" />
-          <Comment className={S.comment} name="Bobik" text="Доехал до центра за 100 батт" date="Вчера" />
-        </div>
-        <CommentDialog buttonText='Отправить' className={S.commentDialog} />
-      </div>
+      {threadData ? (
+        <>
+          <div className={S.content}>
+            <div
+              className={S.image}
+              style={{ backgroundImage: `url(${threadData.logo?.src})` }}
+            />
+            <Tags
+              className={S.tags}
+              tags={['транспорт', 'такси']}
+            />
+            <h2 className={S.title}>{threadData.name}</h2>
+            <span className={S.description}>{threadData.description}</span>
+          </div>
+          <div className={S.comments}>
+            <h2 className={S.title}>
+              Комментарии
+              <span className={S.commentsCounter}>{threadData.comments.length}</span>
+            </h2>
+            <div className={S.list}>
+              {threadData.comments?.map((comment) => (
+                <Comment
+                  className={S.comment}
+                  user={comment.user}
+                  text={comment.text}
+                  date={comment.date}
+                />
+              ))}
+            </div>
+            {!userData ? (
+              <span className={S.diabledText}>
+                Авторизуйтесь, чтобы оставить комментарий!
+              </span>
+            ) : null}
+            <CommentDialog
+              disabled={!userData}
+              buttonText='Отправить'
+              className={S.commentDialog}
+              onCommentSubmit={onCommentSubmit}
+            />
+          </div>
+        </>
+      ) : null}
     </Modal>
   );
 };

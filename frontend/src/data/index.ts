@@ -7,6 +7,7 @@ import { reducer as citiesReducer } from '@data/entities/cities';
 import { reducer as threadsReducer } from '@data/entities/threads';
 import { reducer as reactionsReducer } from '@data/entities/reactions';
 import { reducer as pointsReducer } from '@data/entities/points';
+import { reducer as servicesReducer } from '@data/entities/services';
 
 export const reducer = combineReducers({
   appData: appDataReducer,
@@ -16,4 +17,5 @@ export const reducer = combineReducers({
   threads: threadsReducer,
   reactions: reactionsReducer,
   points: pointsReducer,
+  services: servicesReducer,
 });

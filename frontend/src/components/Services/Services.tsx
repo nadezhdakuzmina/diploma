@@ -1,83 +1,69 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import ContentWrapper from '@components/ContentWrapper';
 import ServiceCard from '@components/ServiceCard';
 import Breadcrumbs from '@components/Breadcrumbs';
+import AddServiceDialog from '@components/AddServiceDialog';
 
 import { useBreadcrumbs } from '@hooks/useBreadcrumbs';
+import { selectServices } from '@data/selectors/services';
 
 import S from './styles.scss';
 
-const CARDS = [
-  {
-    id: 1,
-    src: 'https://avatars.dzeninfra.ru/get-zen_doc/9804207/pub_6481ed3a6094ff55e8a9520c_6481edf01dfacb4481da756c/scale_1200',
-    name: 'Uber',
-    description: 'Сервис такси',
-    tags: ['транспорт', 'такси']
-  },
-  {
-    id: 2,
-    src: 'https://avatars.dzeninfra.ru/get-zen_doc/9804207/pub_6481ed3a6094ff55e8a9520c_6481edf01dfacb4481da756c/scale_1200',
-    name: 'Uber',
-    description: 'Сервис такси',
-    tags: ['транспорт', 'такси']
-  },
-  {
-    id: 3,
-    src: 'https://avatars.dzeninfra.ru/get-zen_doc/9804207/pub_6481ed3a6094ff55e8a9520c_6481edf01dfacb4481da756c/scale_1200',
-    name: 'Uber',
-    description: 'Сервис такси',
-    tags: ['транспорт', 'такси']
-  },
-  {
-    id: 4,
-    src: 'https://avatars.dzeninfra.ru/get-zen_doc/9804207/pub_6481ed3a6094ff55e8a9520c_6481edf01dfacb4481da756c/scale_1200',
-    name: 'Uber',
-    description: 'Сервис такси',
-    tags: ['транспорт', 'такси']
-  },
-  {
-    id: 5,
-    src: 'https://avatars.dzeninfra.ru/get-zen_doc/9804207/pub_6481ed3a6094ff55e8a9520c_6481edf01dfacb4481da756c/scale_1200',
-    name: 'Yandex GO',
-    description: 'Сервис такси',
-    tags: ['транспорт']
-  },
-  {
-    id: 6,
-    src: 'https://avatars.dzeninfra.ru/get-zen_doc/9804207/pub_6481ed3a6094ff55e8a9520c_6481edf01dfacb4481da756c/scale_1200',
-    name: 'Uber',
-    description: 'Сервис такси',
-    tags: ['транспорт', 'такси']
-  },
-  {
-    id: 7,
-    src: 'https://avatars.dzeninfra.ru/get-zen_doc/9804207/pub_6481ed3a6094ff55e8a9520c_6481edf01dfacb4481da756c/scale_1200',
-    name: 'Uber',
-    description: 'Сервис такси',
-    tags: ['транспорт', 'такси']
-  }
-]
+import { selectUserData } from '@data/selectors/user';
 
 const Services: React.FC = () => {
+  const [isModalOpen, setModalOpen] = React.useState(false);
+
   const breadcrumbs = useBreadcrumbs({
     name: 'Сервисы',
     tag: 'services',
   });
 
+  const services = useSelector(selectServices);
+  const userData = useSelector(selectUserData);
+
+  const openFormHandler = React.useCallback(() => {
+    setModalOpen(true);
+  }, []);
+
+  const closeFormHandler = React.useCallback(() => {
+    setModalOpen(false);
+  }, []);
+
   return (
     <ContentWrapper className={S.root}>
       <Breadcrumbs className={S.breadcrumbs} crumbs={breadcrumbs} />
-      <div className={S.content}>
-        {CARDS.map((item) => (
-          <ServiceCard
-            key={item.id}
-            {...item}
-            className={S.card}
-          />
-        ))}
+      <div className={S.addServiceForm}>
+        {userData ? (
+          <span className={S.addServiceFormText}>
+            Вы можете опубликовать новый сервис, для этого{' '}
+            <span
+              onClick={openFormHandler}
+              className={S.openFormLink}
+            >
+              заполните форму.
+            </span>
+          </span>
+        ) : (
+          <span className={S.addServiceFormText}>
+            Авторизуйтесь, чтобы опубликовать новый сервис!
+          </span>
+        )}
       </div>
+      <div className={S.content}>
+        {services?.length ? services.map((service) => (
+          <ServiceCard
+            key={service.id}
+            className={S.card}
+            service={service}
+          />
+        )) : null}
+      </div>
+      {isModalOpen ? (
+        <AddServiceDialog onClose={closeFormHandler} /> 
+      ): null}
     </ContentWrapper>
   );
 };

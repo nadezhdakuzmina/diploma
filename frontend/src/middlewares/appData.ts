@@ -8,9 +8,7 @@ export const appDataMiddleware = async (req: Request, _: Response, next: NextFun
     const appData = await Common.getAppData();
 
     req.appData = appData;
-  } catch(error) {
-    console.error(error);
-  }
+  } catch(error) {}
 
   next();
 };

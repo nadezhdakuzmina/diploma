@@ -19,6 +19,8 @@ import { flushThreadsAction } from '@data/actions/threads';
 import { loadPointsThunk } from '@data/thunk/points';
 import { flushPointsAction } from '@data/actions/points';
 import { selectCurrentCity } from '@data/selectors/cities';
+import { loadServicesThunk } from '@data/thunk/services';
+import { flushServicesAction } from '@data/actions/services';
 
 import { PointCategory } from '@types';
 
@@ -56,11 +58,13 @@ const City: React.FC = () => {
     dispatch(loadCurrentCityThunk(city));
     dispatch(loadCurrentCountryThunk(country));
     dispatch(loadThreadsThunk(country, city));
+    dispatch(loadServicesThunk(country, city));
 
     return () => {
       dispatch(unsetCurrentCityAction());
       dispatch(unsetCurrentCountryAction());
       dispatch(flushThreadsAction());
+      dispatch(flushServicesAction());
     };
   }, [city, dispatch]);
 

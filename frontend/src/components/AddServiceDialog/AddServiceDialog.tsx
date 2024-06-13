@@ -7,29 +7,22 @@ import Modal from '@components/Modal';
 import Input from '@components/Input';
 import TextArea from '@components/TextArea';
 import TagInput from '@components/TagInput';
-import Map, { type Point } from '@components/Map';
 import FileInput from '@components/FileInput';
 import Button from '@components/Button';
-import DraggablePoint from '@components/DraggablePoint';
-import Select from '@components/Select';
 
-import { postPointThunk } from '@data/thunk/points';
+import { postServiceThunk } from '@data/thunk/services';
 import { selectCurrentCity } from '@data/selectors/cities';
 import { selectCurrentCountry } from '@data/selectors/countries';
 
-import { CATEGORIES } from '@components/CategoricalMap/constants';
-
 import S from './styles.scss';
 
-import { type Image, PointCategory } from '@types';
+import { type Image } from '@types';
 
-type AddPointDialogProps = {
-  centerPoint: Point;
-  zoom?: number;
+type AddServiceDialogProps = {
   onClose: () => void;
 };
 
-const AddPointDialog: React.FC<AddPointDialogProps> = (props) => {
+const AddServiceDialog: React.FC<AddServiceDialogProps> = (props) => {
   const dispatch = useDispatch();
   const currentCountry = useSelector(selectCurrentCountry);
   const currentCity = useSelector(selectCurrentCity);
@@ -37,16 +30,12 @@ const AddPointDialog: React.FC<AddPointDialogProps> = (props) => {
   const [tags, setTags] = React.useState<string[]>([]);
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
-  const [point, setPoint] = React.useState<[number, number]>(null);
   const [filename, setFilename] = React.useState<string>(null)
   const [image, setImage] = React.useState<Image>(null);
-  const [category, setCategory] = React.useState<PointCategory>(null);
 
   const [nameError, setNameError] = React.useState(false);
   const [descriptionError, setDescriptionError] = React.useState(false);
-  const [pointError, setPointError] = React.useState(false);
   const [uploadImageError, setImageError] = React.useState(false);
-  const [categoryError, setCategoryError] = React.useState(false);
   const [isFileLoading, setFileLoading] = React.useState(false);
 
   const handleTagsChange = React.useCallback((tags: string[]) => {
@@ -64,11 +53,6 @@ const AddPointDialog: React.FC<AddPointDialogProps> = (props) => {
     setDescription(value);
     setDescriptionError(false);
   }, []);
-  
-  const handleSetPoint = React.useCallback((point: [number, number]) => {
-    setPoint(point);
-    setPointError(false);
-  }, []);
 
   const handleFileSelect = React.useCallback((file: File) => {
     setFilename(file.name);
@@ -82,11 +66,6 @@ const AddPointDialog: React.FC<AddPointDialogProps> = (props) => {
       .finally(() => {
         setFileLoading(false);
       });
-  }, []);
-
-  const handleCategorySelect = React.useCallback((category) => {
-    setCategory(category);
-    setCategoryError(false);
   }, []);
 
   const isValid = React.useCallback((): boolean => {
@@ -107,45 +86,35 @@ const AddPointDialog: React.FC<AddPointDialogProps> = (props) => {
       isValid = false;
     }
 
-    if (!point) {
-      setPointError(true);
-      isValid = false;
-    }
-
-    if (!category) {
-      setCategoryError(true);
-      isValid = false;
-    }
-
     return isValid;
-  }, [name, description, image, point, category]);
+  }, [name, description, image]);
 
   const handleApply = React.useCallback(() => {
     if (!isValid()) {
       return;
     }
 
-    dispatch(postPointThunk(
+    dispatch(postServiceThunk(
       name,
       description,
-      [image],
-      category,
       tags,
-      ...point,
+      image,
     ));
     props.onClose?.();
-  }, [tags, name, description, category, image, point, isValid, props.onClose]);
+  }, [tags, name, description, image, isValid, props.onClose]);
 
   const locationName = React.useMemo(() => {
-    const { name: country } = currentCountry;
-    const { name: city } = currentCity;
+    if (!currentCountry && !currentCity) {
+      return 'Весь мир';
+    }
 
-    return `${country} / ${city}`;
+    return [
+      currentCountry?.name,
+      currentCity?.name,
+    ]
+      .filter(Boolean)
+      .join(' / ');
   }, [currentCountry, currentCity]);
-
-  const options = React.useMemo(() => {
-    return CATEGORIES.map(({ id, title }) => ({ id, name: title }));
-  }, []);
 
   return (
     <Modal onClose={props.onClose}>
@@ -170,15 +139,6 @@ const AddPointDialog: React.FC<AddPointDialogProps> = (props) => {
         inputClassName={cn({ [S.errorInput]: descriptionError })}
         label="Описание"
       />
-      <Select
-        label="Категория"
-        placeholder="Выберите категорию"
-        options={options}
-        onOptionSelect={handleCategorySelect}
-        className={S.input}
-        selectedOption={category}
-        inputClassName={cn({ [S.errorInput]: categoryError })}
-      />
       <FileInput
         className={cn(S.input)}
         inputClassName={cn({
@@ -195,23 +155,6 @@ const AddPointDialog: React.FC<AddPointDialogProps> = (props) => {
         onTagsChange={handleTagsChange}
         tags={tags}
       />
-      <div className={S.mapWrapper}>
-        <label className={S.mapLabel}>
-          Укажите место
-        </label>
-        <Map
-          centerPoint={props.centerPoint}
-          className={cn(S.map, { [S.errorInput]: pointError })}
-        >
-          {(map) => (
-            <DraggablePoint
-              map={map}
-              defaultPoint={props.centerPoint}
-              onMove={handleSetPoint}
-            />
-          )}
-        </Map>
-      </div>
       <div className={S.buttonWrap}>
         <Button onClick={handleApply} className={S.applyButton}>
           Опубликовать
@@ -224,4 +167,4 @@ const AddPointDialog: React.FC<AddPointDialogProps> = (props) => {
   );
 };
 
-export default AddPointDialog;
+export default AddServiceDialog;

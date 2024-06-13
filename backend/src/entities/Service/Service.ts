@@ -10,6 +10,7 @@ import {
   OneToOne,
   ManyToMany,
   JoinTable,
+  BeforeInsert,
 } from 'typeorm';
 
 import { City } from '@entities/City';
@@ -24,11 +25,17 @@ class Service extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: 'timestamptz', nullable: true })
+  date: Date;
+
   @Column()
   name: string;
 
   @Column()
   description: string;
+
+  @Column({ default: false })
+  moderated: boolean;
 
   /** USER REALATION  */
   @ManyToOne(() => User, (user) => user.services, {
@@ -86,6 +93,11 @@ class Service extends BaseEntity {
   @ManyToMany(() => Tag)
   @JoinTable()
   tags: Tag[];
+
+  @BeforeInsert()
+  setCreationDate() {
+    this.date = new Date();
+  }
 }
 
 export default Service;

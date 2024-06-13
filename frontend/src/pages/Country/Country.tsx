@@ -15,6 +15,8 @@ import { loadCitiesThunk } from '@data/thunk/cities';
 import { flushCitiesAction } from '@data/actions/cities';
 import { loadThreadsThunk } from '@data/thunk/threads';
 import { flushThreadsAction } from '@data/actions/threads';
+import { loadServicesThunk } from '@data/thunk/services';
+import { flushServicesAction } from '@data/actions/services';
 
 const CITIES_TAB_ID = 'cities';
 const THREADS_TAB_ID = 'threads';
@@ -47,11 +49,13 @@ const Country: React.FC = () => {
     dispatch(loadCurrentCountryThunk(country));
     dispatch(loadCitiesThunk(country));
     dispatch(loadThreadsThunk(country, null));
+    dispatch(loadServicesThunk(country, null));
 
     return () => {
       dispatch(unsetCurrentCountryAction());
       dispatch(flushCitiesAction());
       dispatch(flushThreadsAction());
+      dispatch(flushServicesAction());
     };
   }, [country, dispatch]);
 

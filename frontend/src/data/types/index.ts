@@ -3,6 +3,7 @@ import type { CitiesState } from '@data/entities/cities/types';
 import type { CountriesState } from '@data/entities/countries/types';
 import type { PointsState } from '@data/entities/points/types';
 import type { ReactionsState } from '@data/entities/reactions/types';
+import type { ServicesState } from '@data/entities/services/types';
 import type { ThreadsState } from '@data/entities/threads/types';
 import type { UserState } from '@data/entities/user/types';
 
@@ -14,4 +15,5 @@ export interface State {
   threads: ThreadsState;
   reactions: ReactionsState;
   points: PointsState;
+  services: ServicesState;
 }

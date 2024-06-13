@@ -1,4 +1,4 @@
-import { Thread } from '@entities/Thread';
+import { Service } from '@entities/Service';
 import { Tag } from '@entities/Tag';
 import { City } from '@entities/City';
 import { Country } from '@entities/Country';
@@ -10,17 +10,26 @@ import type { Request, Response } from '@types';
 type BodyParams = {
   citySlug?: string;
   countrySlug?: string;
+  name: string;
+  description: string;
   tags: string[];
-  text: string;
+  logoId: number;
 };
 
-export const postThread = requireAuth(async (req: Request, res: Response) => {
-  const { text, tags: tagsStr, citySlug, countrySlug } = req.body as BodyParams;
+export const postService = requireAuth(async (req: Request, res: Response) => {
+  const {
+    name,
+    description,
+    logoId,
+    tags: tagsStr,
+    citySlug,
+    countrySlug,
+  } = req.body as BodyParams;
   const { authUser: user } = req;
 
-  if (!text || !tagsStr) {
+  if (!name || !description || !logoId || !tagsStr) {
     return res.status(400).json({
-      error: 'text and tags are required',
+      error: 'name, description, logoId and tags are required',
     });
   }
 
@@ -61,15 +70,17 @@ export const postThread = requireAuth(async (req: Request, res: Response) => {
       slug: countrySlug,
     });
 
-    const thread = Thread.create({
-      text,
+    const service = Service.create({
+      name,
+      description,
       user,
       tags,
+      logoId,
       city,
       country,
     });
 
-    await thread.save();
+    await service.save();
 
     res.json({
       success: true,

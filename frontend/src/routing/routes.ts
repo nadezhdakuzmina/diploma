@@ -9,6 +9,7 @@ import {
   currentCityMiddleware,
   threadsMiddleware,
   pointsMiddleware,
+  servicesMiddleware,
 } from '@root/middlewares';
 
 import type { ExtendedRouteObject } from './types';
@@ -20,6 +21,7 @@ export const routes: ExtendedRouteObject[] = [
     middlewares: [
       countriesMiddleware,
       threadsMiddleware,
+      servicesMiddleware,
     ],
   },
   {
@@ -29,6 +31,7 @@ export const routes: ExtendedRouteObject[] = [
       currentCountryMiddleware,
       citiesMiddleware,
       threadsMiddleware,
+      servicesMiddleware,
     ],
   },
   {
@@ -37,8 +40,9 @@ export const routes: ExtendedRouteObject[] = [
     middlewares: [
       currentCountryMiddleware,
       currentCityMiddleware,
-      threadsMiddleware,
       pointsMiddleware,
+      threadsMiddleware,
+      servicesMiddleware,
     ]
   },
 ];

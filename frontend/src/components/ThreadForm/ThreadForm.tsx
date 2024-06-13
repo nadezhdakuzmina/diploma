@@ -33,24 +33,24 @@ const ThreadForm: React.FC = () => {
 
   return (
     <div className={S.root}>
-        {!userData ? (
-            <span className={S.diabledText}>
-            Авторизуйтесь, чтобы начать новый тред!
-            </span>
-        ) : null}
-        {isCommentFormActive && (
-            <TagInput
-              tags={tags}
-              className={S.tagInput}
-              label="Теги"
-              onTagsChange={handleTagsChange}
-            />
-        )}
-        <CommentDialog
-          disabled={!userData}
-          onChange={handleCommentDialogType}
-          onCommentSubmit={handleFormSubmit}
+      {!userData ? (
+        <span className={S.diabledText}>
+          Авторизуйтесь, чтобы начать новый тред!
+        </span>
+      ) : null}
+      {isCommentFormActive && (
+        <TagInput
+          tags={tags}
+          className={S.tagInput}
+          label="Теги"
+          onTagsChange={handleTagsChange}
         />
+      )}
+      <CommentDialog
+        disabled={!userData}
+        onChange={handleCommentDialogType}
+        onCommentSubmit={handleFormSubmit}
+      />
     </div>
   );
 };

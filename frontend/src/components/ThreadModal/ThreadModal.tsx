@@ -16,7 +16,6 @@ import S from './styles.scss';
 type ThreadModalProps = {
   id: number;
   onClose: () => void;
-  text?: string;
 };
 
 const ThreadModal: React.FC<ThreadModalProps> = (props) => {

@@ -19,6 +19,7 @@ export const ServiceResouce = {
       'logoId',
       'countryId',
       'cityId',
+      'moderated',
     ],
     showProperties: [
       'id',
@@ -28,6 +29,7 @@ export const ServiceResouce = {
       'logoId',
       'countryId',
       'cityId',
+      'moderated',
     ],
     editProperties: [
       'name',
@@ -36,6 +38,7 @@ export const ServiceResouce = {
       'logoId',
       'countryId',
       'cityId',
+      'moderated',
     ],
   },
 };

@@ -16,3 +16,4 @@ export * from './countries';
 export * from './cities';
 export * from './threads';
 export * from './points';
+export * from './services';

@@ -96,7 +96,7 @@ export const postPoint = requireAuth(async (req: Request, res: Response) => {
       images: imagesObjects,
     });
 
-    mapPoint.save();
+    await mapPoint.save();
 
     res.json({
       success: true,
