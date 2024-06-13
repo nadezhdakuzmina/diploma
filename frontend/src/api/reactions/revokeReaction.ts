@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams } from '@types';
 
@@ -11,7 +11,7 @@ type RevokeReactionApiResponse = {
 };
 
 export const revokeReaction = async (reactionId: number, extraParams?: ApiExtraParams): Promise<boolean> => {
-  return axios(`${BACKEND_BASE_URL}/reactions/revoke`, {
+  return axios(`${BACKEND_BASE_API_URL}/reactions/revoke`, {
     method: 'POST',
     data: {
       id: reactionId

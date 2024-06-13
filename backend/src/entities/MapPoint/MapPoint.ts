@@ -42,10 +42,10 @@ class MapPoint extends BaseEntity {
   @Column({ enum: PointCategory })
   type: PointCategory;
 
-  @Column()
+  @Column({ nullable: false, type: 'float8' })
   lng: number;
 
-  @Column()
+  @Column({ nullable: false, type: 'float8' })
   lat: number;
 
   @Column({ default: false })

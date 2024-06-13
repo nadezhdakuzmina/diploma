@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams, PointCategory } from '@types';
 
@@ -13,7 +13,7 @@ type PostPointApiResponse = {
 export const postPoint = async (
   name: string,
   description: string,
-  // images: string[];
+  images: number[],
   type: PointCategory,
   citySlug: string,
   tags: string[],
@@ -21,11 +21,12 @@ export const postPoint = async (
   lat: number,
   extraParams?: ApiExtraParams
 ): Promise<boolean> => {
-  return axios(`${BACKEND_BASE_URL}/points/point`, {
+  return axios(`${BACKEND_BASE_API_URL}/points/point`, {
     method: 'POST',
     data: {
       name,
       description,
+      images,
       type,
       tags,
       lng,

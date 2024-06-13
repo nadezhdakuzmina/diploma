@@ -9,6 +9,7 @@ import type { DataSource } from 'typeorm';
 export interface Request extends ExpressRequest {
   dataSource: DataSource;
   apiBaseUrl: string;
+  staticBaseUrl: string;
   domainName: string;
   cookies: Record<string, string>;
   authUser?: User;

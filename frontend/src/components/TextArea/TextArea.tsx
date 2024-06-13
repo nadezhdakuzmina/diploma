@@ -5,16 +5,20 @@ import S from './styles.scss';
 
 type TextAreaProps = React.HTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
+  inputClassName?: string;
   label?: string;
   disabled?: boolean;
   textAreaRef?: React.RefObject<HTMLTextAreaElement>;
+  textAreaValue?: string;
 };
 
 const TextArea: React.FC<TextAreaProps> = ({
   className,
+  inputClassName,
   label,
   disabled,
   textAreaRef,
+  textAreaValue,
   ...otherProps
 }) => {
   const inputRef = textAreaRef || React.useRef<HTMLTextAreaElement>(null);
@@ -38,8 +42,9 @@ const TextArea: React.FC<TextAreaProps> = ({
       <div onClick={clickHandler} className={cn(S.wrapper, {
         [S.disabled]: disabled,
         [S.active]: isActive,
-      })}>
+      }, inputClassName)}>
         <textarea
+          value={textAreaValue}
           placeholder="Давным давно в далекой галактике..."
           className={S.textArea}
           {...otherProps}

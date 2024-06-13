@@ -2,6 +2,8 @@ import { PointCategory } from '@types';
 
 import type { Category } from './types';
 
+export const DEFAULT_ZOOM = 12;
+
 export const CATEGORIES: Category[] = [
   {
     id: PointCategory.Popular,

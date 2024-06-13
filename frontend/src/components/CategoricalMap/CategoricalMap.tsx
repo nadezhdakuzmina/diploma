@@ -10,7 +10,7 @@ import { loadCurrentPointThunk, loadPointsThunk } from '@data/thunk/points';
 import { unsetCurrentPointAction } from '@data/actions/points';
 import { selectCurrentCity } from '@data/selectors/cities';
 
-import { CATEGORIES } from './constants';
+import { CATEGORIES, DEFAULT_ZOOM } from './constants';
 
 import S from './styles.scss';
 
@@ -56,7 +56,7 @@ const CategoricalMap: React.FC = () => {
       {currentCity && (
         <PlacesMap
           className={S.map}
-          zoom={2}
+          zoom={DEFAULT_ZOOM}
           centerPoint={[
             currentCity?.lng || 0,
             currentCity?.lat || 0,

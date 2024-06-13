@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Modal from '@components/Modal';
 import Tags from '@components/Tags';
@@ -7,6 +7,8 @@ import Comment from '@components/Comment';
 import CommentDialog from '@components/CommentDialog';
 
 import { selectCurrentPoint } from '@data/selectors/points/selectCurrentPoint';
+import { selectUserData } from '@data/selectors/user';
+import { postPointCommentThunk } from '@data/thunk/points';
 
 import S from './styles.scss';
 
@@ -15,9 +17,13 @@ type PointModalProps = {
 };
 
 const PointModal: React.FC<PointModalProps> = (props) => {
+  const dispatch = useDispatch();
+
   const currentPoint = useSelector(selectCurrentPoint);
+  const userData = useSelector(selectUserData);
 
   const {
+    id: pointId,
     name,
     description,
     tags,
@@ -28,6 +34,10 @@ const PointModal: React.FC<PointModalProps> = (props) => {
   const tagsList = React.useMemo(() => {
     return tags?.map(({ name }) => name) || [];
   }, [tags]);
+
+  const onCommentSubmit = React.useCallback((text: string) => {
+    dispatch(postPointCommentThunk(pointId, text));
+  }, [pointId]);
 
   return (
     <Modal className={S.root} onClose={props.onClose}>
@@ -63,7 +73,12 @@ const PointModal: React.FC<PointModalProps> = (props) => {
                 />
               ))}
             </div>
-            <CommentDialog buttonText='Отправить' className={S.commentDialog} />
+            <CommentDialog
+              buttonText='Отправить'
+              className={S.commentDialog}
+              disabled={!userData}
+              onCommentSubmit={onCommentSubmit}
+            />
           </div>
         </>
       ) : null}

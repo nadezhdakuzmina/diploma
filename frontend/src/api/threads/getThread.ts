@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams, FullThread } from '@types';
 
@@ -9,7 +9,7 @@ type ThreadApiResponse = {
 };
 
 export const getThread = async (id: number, extraParams?: ApiExtraParams): Promise<FullThread> => {
-  return axios(`${BACKEND_BASE_URL}/threads/thread`, {
+  return axios(`${BACKEND_BASE_API_URL}/threads/thread`, {
     params: {
       id,
     },

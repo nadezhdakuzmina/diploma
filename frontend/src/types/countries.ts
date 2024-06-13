@@ -1,3 +1,4 @@
+import type { City } from './cities';
 import type { Image } from './image';
 
 export type Country = {
@@ -6,5 +7,9 @@ export type Country = {
   description: string;
   logo: Image;
   slug: string;
+};
+
+export type FullCountry = Country & {
+  cities: City[];
 };
   

@@ -6,3 +6,4 @@ export { default as Common } from './Common';
 export { default as Threads } from './Threads';
 export { default as Reactions } from './Reactions';
 export { default as MapPoints } from './MapPoints';
+export { default as Search } from './Search';

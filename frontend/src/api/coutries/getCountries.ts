@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams, Country } from '@types';
 
@@ -9,7 +9,7 @@ type CountriesApiResponse = {
 };
 
 export const getCountries = async (extraParams?: ApiExtraParams): Promise<Country[]> => {
-  return axios(`${BACKEND_BASE_URL}/countries`, {
+  return axios(`${BACKEND_BASE_API_URL}/countries`, {
     withCredentials: true,
     ...extraParams
   })

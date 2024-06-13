@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams } from '@types';
 
@@ -11,7 +11,7 @@ type CommentApiResponse = {
 };
 
 export const postComment = async (pointId: number, text: string, extraParams?: ApiExtraParams): Promise<boolean> => {
-  return axios(`${BACKEND_BASE_URL}/points/comment`, {
+  return axios(`${BACKEND_BASE_API_URL}/points/comment`, {
     method: 'POST',
     data: {
       pointId,

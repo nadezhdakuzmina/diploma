@@ -33,7 +33,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
 
     setInputValue(value);
 
-    if (value.length < 3) {
+    if (value.length < 2) {
       setSuggests(null);
       return;
     }
@@ -55,24 +55,28 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
     };
   }, []);
 
-  const renderSuggest = (suggest: Suggest) => (
+  const renderSuggests = (suggests: Suggest[]) => (
     <div className={S.suggest}>
-      <div
-        key={suggest.searchId}
-        className={S.suggestItem}
-        onClick={createSelectHandler(suggest.searchId, suggest.value)}
-      >
-        {suggest.value}
-      </div>
-      {suggest.subSuggests?.map((subSuggest) => (
-        <div
-          key={subSuggest.searchId}
-          className={cn(S.suggestItem, S.suggestSubItem)}
-          onClick={createSelectHandler(subSuggest.searchId, subSuggest.value)}
-        >
-          {subSuggest.value}
-          <span>{`, ${suggest.value}`}</span>
-        </div>
+      {suggests.map((suggest) => (
+        <>
+          <div
+            key={suggest.searchId}
+            className={S.suggestItem}
+            onClick={createSelectHandler(suggest.searchId, suggest.value)}
+          >
+            {suggest.value}
+          </div>
+          {suggest.subSuggests?.map((subSuggest) => (
+            <div
+              key={subSuggest.searchId}
+              className={cn(S.suggestItem, S.suggestSubItem)}
+              onClick={createSelectHandler(subSuggest.searchId, subSuggest.value)}
+            >
+              {subSuggest.value}
+              <span>{`, ${suggest.value}`}</span>
+            </div>
+          ))}
+        </>
       ))}
     </div>
   );
@@ -91,11 +95,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           </svg>
         }
       />
-      {suggests ? suggests.map((suggest) => (
-        <React.Fragment key={suggest.searchId}>
-          {renderSuggest(suggest)}
-        </React.Fragment>
-      )) : null}
+      {suggests?.length > 0 ? renderSuggests(suggests) : null}
     </div>
   );
 };

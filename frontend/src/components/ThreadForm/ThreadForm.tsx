@@ -27,12 +27,9 @@ const ThreadForm: React.FC = () => {
   }, []);
 
   const handleFormSubmit = React.useCallback((text: string) => {
-    console.log('inside', tags);
     dispatch(postThreadThunk(text, tags));
     setTags([]);
   }, [tags, dispatch]);
-
-  console.log(tags);
 
   return (
     <div className={S.root}>

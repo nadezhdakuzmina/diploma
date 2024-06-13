@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams } from '@types';
 
@@ -11,7 +11,7 @@ type CommentApiResponse = {
 };
 
 export const postReaction = async (threadId: number, extraParams?: ApiExtraParams): Promise<boolean> => {
-  return axios(`${BACKEND_BASE_URL}/threads/reaction`, {
+  return axios(`${BACKEND_BASE_API_URL}/threads/reaction`, {
     method: 'POST',
     data: {
       threadId,

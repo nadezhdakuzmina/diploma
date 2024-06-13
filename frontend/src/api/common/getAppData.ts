@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams } from '@types';
 import type { AppData } from '@types';
@@ -8,7 +8,7 @@ import type { AppData } from '@types';
 type AppDataApiResponse = AppData;
 
 export const getAppData = async (extraParams?: ApiExtraParams): Promise<AppData> => {
-  return axios(`${BACKEND_BASE_URL}/common/appdata`, {
+  return axios(`${BACKEND_BASE_API_URL}/common/appdata`, {
     withCredentials: true,
     ...extraParams
   })

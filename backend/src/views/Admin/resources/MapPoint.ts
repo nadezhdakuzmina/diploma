@@ -20,6 +20,7 @@ export const MapPointResouce = {
       'lat',
       'userId',
       'cityId',
+      'moderated',
     ],
     showProperties: [
       'id',
@@ -30,6 +31,7 @@ export const MapPointResouce = {
       'lat',
       'userId',
       'cityId',
+      'moderated',
     ],
     editProperties: [
       'name',
@@ -39,6 +41,7 @@ export const MapPointResouce = {
       'lat',
       'userId',
       'cityId',
+      'moderated',
     ],
   },
 };

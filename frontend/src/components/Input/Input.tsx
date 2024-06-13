@@ -7,11 +7,13 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   icon?: React.ReactNode;
   label?: string;
   className?: string;
+  inputClassName?: string;
 };
 
 const Input: React.FC<InputProps> = ({
   icon,
   className,
+  inputClassName,
   label,
   ...otherProps
 }) => {
@@ -35,7 +37,7 @@ const Input: React.FC<InputProps> = ({
       {label && <label className={S.label}>{label}</label>}
       <div
         onClick={clickHandler}
-        className={cn(S.inputWrapper, { [S.active]: isActive })}
+        className={cn(S.inputWrapper, { [S.active]: isActive }, inputClassName)}
       >
         {icon && <div className={S.icon}>{icon}</div>}
         <input

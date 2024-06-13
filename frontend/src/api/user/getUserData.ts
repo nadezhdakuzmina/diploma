@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams, UserData } from '@types';
 
@@ -9,7 +9,7 @@ type UserDataApiResponse = {
 };
 
 export const getUserData = async (extraParams?: ApiExtraParams): Promise<UserData | null> => {
-  return axios(`${BACKEND_BASE_URL}/users/userdata`, {
+  return axios(`${BACKEND_BASE_API_URL}/users/userdata`, {
     withCredentials: true,
     ...extraParams
   })

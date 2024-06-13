@@ -5,11 +5,12 @@ import { City } from '@entities/City';
 import { requireAuth } from '@utils/requireAuth';
 
 import type { Request, Response } from '@types';
+import { Image } from '@entities/Image';
 
 type BodyParams = {
   name: string;
   description: string;
-  // images: string[];
+  images: number[];
   type: PointCategory;
   citySlug: string;
   tags: string[];
@@ -22,6 +23,7 @@ export const postPoint = requireAuth(async (req: Request, res: Response) => {
     name,
     description,
     type,
+    images,
     tags: tagsStr,
     lng,
     lat,
@@ -29,7 +31,7 @@ export const postPoint = requireAuth(async (req: Request, res: Response) => {
   } = req.body as BodyParams;
   const { authUser: user } = req;
 
-  if (!name || !description || !type || !tagsStr || !lng || !lat) {
+  if (!name || !description || !type || !tagsStr || !lng || !lat || !images) {
     return res.status(400).json({
       error: 'name, description, type, tagsStr, lng and lat are required',
     });
@@ -38,6 +40,12 @@ export const postPoint = requireAuth(async (req: Request, res: Response) => {
   if (!Array.isArray(tagsStr)) {
     return res.status(400).json({
       error: 'tags are invalid',
+    });
+  }
+
+  if (!Array.isArray(images)) {
+    return res.status(400).json({
+      error: 'images are invalid',
     });
   }
 
@@ -70,6 +78,8 @@ export const postPoint = requireAuth(async (req: Request, res: Response) => {
 
     await Promise.all(tagsToSave.map((tag) => tag.save()));
 
+    const imagesObjects = await Image.findByIds(images);
+
     const city = await City.findOneBy({
       slug: citySlug,
     });
@@ -83,6 +93,7 @@ export const postPoint = requireAuth(async (req: Request, res: Response) => {
       city,
       user,
       tags,
+      images: imagesObjects,
     });
 
     mapPoint.save();

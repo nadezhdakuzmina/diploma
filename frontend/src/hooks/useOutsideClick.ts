@@ -21,7 +21,7 @@ export const useOutsideClick = <T extends HTMLElement>(onOutsideClick: () => voi
     return () => {
       window.document.removeEventListener('click', handleClick);
     };
-  }, [ref]);
+  }, [ref, onOutsideClick]);
 
   return setRef;
 };

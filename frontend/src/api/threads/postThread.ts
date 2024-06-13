@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams } from '@types';
 
@@ -17,7 +17,7 @@ export const postThread = async (
   citySlug?: string,
   extraParams?: ApiExtraParams
 ): Promise<boolean> => {
-  return axios(`${BACKEND_BASE_URL}/threads/thread`, {
+  return axios(`${BACKEND_BASE_API_URL}/threads/thread`, {
     method: 'POST',
     data: {
       text,

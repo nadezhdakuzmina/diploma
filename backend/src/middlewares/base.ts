@@ -12,6 +12,7 @@ export const baseMiddlewares = (
   const scheme = IS_DEV ? 'http://' : 'https://';
 
   req.apiBaseUrl = `${scheme}${host}/api`;
+  req.staticBaseUrl = `${scheme}${host}/static`;
   req.domainName = DOMAIN;
 
   next();

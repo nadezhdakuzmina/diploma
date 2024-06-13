@@ -7,6 +7,7 @@ import { CommonPath, CommonRouter } from './Common';
 import { ThreadsPath, ThreadsRouter } from './Threads';
 import { ReactionsPath, ReactionsRouter } from './Reactions';
 import { MapPointsPath, MapPointsRouter } from './MapPoints';
+import { SearchPath, SearchRouter } from './Search';
 
 export const ApiPath = '/api';
 export const ApiRouter = Router();
@@ -18,3 +19,4 @@ ApiRouter.use(CommonPath, CommonRouter);
 ApiRouter.use(ThreadsPath, ThreadsRouter);
 ApiRouter.use(ReactionsPath, ReactionsRouter);
 ApiRouter.use(MapPointsPath, MapPointsRouter);
+ApiRouter.use(SearchPath, SearchRouter);

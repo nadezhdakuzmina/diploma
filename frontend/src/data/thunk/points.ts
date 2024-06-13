@@ -6,7 +6,7 @@ import { selectCurrentPointCategory, selectPoints } from '@data/selectors/points
 
 import type { State } from '@data/types';
 import type { ThunkActionDispatch } from 'redux-thunk';
-import type { PointCategory } from '@types';
+import type { Image, PointCategory } from '@types';
 
 export const loadPointsThunk = (type: PointCategory, force = false) => {
   return async (dispatch: ThunkActionDispatch<any>, getState: () => State) => {
@@ -53,9 +53,8 @@ export const updatePointThunk = (id: number) => {
 export const postPointThunk = (
   name: string,
   description: string,
-  // images: string[];
+  images: Image[],
   type: PointCategory,
-  citySlug: string,
   tags: string[],
   lng: number,
   lat: number,
@@ -64,12 +63,16 @@ export const postPointThunk = (
     const state = getState();
 
     const currentPointCategory = selectCurrentPointCategory(state);
+    const currentCity = selectCurrentCity(state);
+
+    const imagesId = images.map(({ id }) => id);
 
     Points.postPoint(
       name,
       description,
+      imagesId,
       type,
-      citySlug,
+      currentCity.slug,
       tags,
       lng,
       lat,

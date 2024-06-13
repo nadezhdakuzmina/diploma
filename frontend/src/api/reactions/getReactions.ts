@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams, Reaction } from '@types';
 
@@ -9,7 +9,7 @@ type ReactionsApiResponse = {
 };
 
 export const getReactions = async (extraParams?: ApiExtraParams): Promise<Reaction[]> => {
-  return axios(`${BACKEND_BASE_URL}/reactions`, {
+  return axios(`${BACKEND_BASE_API_URL}/reactions`, {
     withCredentials: true,
     ...extraParams
   })

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams, Point, PointCategory } from '@types';
 
@@ -9,7 +9,7 @@ type PointsApiResponse = {
 };
 
 export const getPoints = async (citySlug: string, type: PointCategory, extraParams?: ApiExtraParams): Promise<Point[]> => {
-  return axios(`${BACKEND_BASE_URL}/points`, {
+  return axios(`${BACKEND_BASE_API_URL}/points`, {
     params: {
       citySlug,
       type,

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams, Thread } from '@types';
 
@@ -28,7 +28,7 @@ export const getThreads = async (
     params.citySlug = citySlug;
   }
 
-  return axios(`${BACKEND_BASE_URL}/threads`, {
+  return axios(`${BACKEND_BASE_API_URL}/threads`, {
     params,
     withCredentials: true,
     ...extraParams

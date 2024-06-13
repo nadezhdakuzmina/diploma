@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BACKEND_BASE_URL } from '@constants';
+import { BACKEND_BASE_API_URL } from '@constants';
 
 import type { ApiExtraParams, Country } from '@types';
 
@@ -9,7 +9,7 @@ type CountryApiResponse = {
 };
 
 export const getCountry = async (countrySlug: string, extraParams?: ApiExtraParams): Promise<Country | null> => {
-  return axios(`${BACKEND_BASE_URL}/countries/country`, {
+  return axios(`${BACKEND_BASE_API_URL}/countries/country`, {
     params: {
       countrySlug,
     },
