@@ -35,8 +35,6 @@ services:
     restart: unless-stopped
     volumes:
       - "./frontend/src:/app/src"
-    depends_on:
-      - backend
     env_file:
       - .env.prod
     networks:
@@ -54,6 +52,9 @@ services:
       - .certbot:/etc/letsencrypt
       - ./nginx/conf.d:/etc/nginx/user_conf.d
       - ./nginx/www:/etc/nginx/www/
+    depends_on:
+      - backend
+      - frontend
     ports:
       - "80:80"
       - "443:443"
