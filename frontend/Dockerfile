@@ -6,3 +6,5 @@ COPY . .
 
 RUN npm ci
 RUN npm run build:all:prod
+
+EXPOSE 3000
