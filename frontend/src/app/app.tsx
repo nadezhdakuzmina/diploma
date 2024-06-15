@@ -9,6 +9,8 @@ import { selectVkOauthData } from '@data/selectors/appData';
 import { loadReactionsThunk } from '@data/thunk/reactions';
 import { loadUserDataThunk } from '@data/thunk/user';
 
+import { BACKEND_URL } from '@constants';
+
 import '@assets/styles/common.scss';
 import '@assets/styles/variables.scss';
 
@@ -20,7 +22,7 @@ const App: React.FC = () => {
   React.useEffect(() => {
     VKID.Config.set({
       app: appId,
-      redirectUrl: `http://localhost:9090${redirectUri}`,
+      redirectUrl: `${BACKEND_URL}${redirectUri}`,
     });
   }, [appId, redirectUri]);
 
