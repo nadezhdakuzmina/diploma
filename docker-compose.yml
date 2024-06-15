@@ -30,7 +30,12 @@ services:
       - infrastructure
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        SSL: ${SSL}
+        DOMAIN: ${DOMAIN}
+        BACKEND_UPSTREAM: ${BACKEND_UPSTREAM}
     container_name: frontend
     restart: unless-stopped
     volumes:
