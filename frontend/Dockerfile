@@ -4,6 +4,12 @@ WORKDIR /app
 
 COPY . .
 
+ENV SSL "$SSL"
+ENV DOMAIN "$DOMAIN"
+ENV BACKEND_UPSTREAM "$BACKEND_UPSTREAM"
+
+RUN echo "$SSL . $DOMAIN . $BACKEND_UPSTREAM"
+
 RUN npm ci
 RUN npm run build:all:prod
 
