@@ -20,5 +20,7 @@ export const BACKEND_URL = BUILD === 'client'
   ? `${scheme}://${DOMAIN}`
   : `http://${BACKEND_UPSTREAM}`;
 
+console.log('BACKEND_URL', BACKEND_URL)
+
 export const BACKEND_BASE_API_URL = `${BACKEND_URL}/api`;
 export const BACKEND_BASE_STATIC_URL = `${BACKEND_URL}/static`;
