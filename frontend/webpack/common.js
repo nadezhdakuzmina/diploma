@@ -55,6 +55,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.isProduction': isProduction,
       'process.env.basePath': basePath,
+      'process.env.BUILD': process.env.BUILD,
       'process.env.SSL': process.env.SSL,
       'process.env.DOMAIN': process.env.DOMAIN,
       'process.env.BACKEND_UPSTREAM': process.env.BACKEND_UPSTREAM,
