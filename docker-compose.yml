@@ -30,7 +30,7 @@ services:
       - infrastructure
 
   frontend: 
-    build: .
+    build: ./frontend
     container_name: frontend
     restart: unless-stopped
     volumes:
