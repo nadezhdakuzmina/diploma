@@ -1,5 +1,7 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
+const webpack = require('webpack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const common = require('./common');
@@ -15,6 +17,11 @@ module.exports = merge(common, {
     clean: false,
   },
   target: 'node',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.BUILD': JSON.stringify('server'),
+    }),
+  ],
   module: {
     rules: [
       {

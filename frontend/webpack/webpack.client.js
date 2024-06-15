@@ -1,5 +1,6 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
+const webpack = require('webpack');
 
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -34,15 +35,18 @@ module.exports = merge(common, {
       inject: true,
       mode: isProduction ? 'webapp' : 'light',
       favicons: {
-        appName: 'Jeembo Finance',
-        appDescription: 'Crypto arbitrage platform',
+        appName: 'Твой путеводитель',
+        appDescription: 'Опыт тысячи туристов в одном месте',
         background: '#fff',
-        theme_color: '#5095f0',
+        theme_color: 'rgb(255,78,205)',
         icons: {
           appleStartup: false,
         }
       }
-    })
+    }),
+    new webpack.DefinePlugin({
+      'process.env.BUILD': JSON.stringify('client'),
+    }),
   ],
   module: {
     rules: [

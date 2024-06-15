@@ -53,12 +53,11 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      'process.env.isProduction': isProduction,
-      'process.env.basePath': basePath,
-      'process.env.BUILD': process.env.BUILD,
-      'process.env.SSL': process.env.SSL,
-      'process.env.DOMAIN': process.env.DOMAIN,
-      'process.env.BACKEND_UPSTREAM': process.env.BACKEND_UPSTREAM,
+      'process.env.isProduction': JSON.stringify(isProduction),
+      'process.env.basePath': JSON.stringify(basePath),
+      'process.env.SSL': JSON.stringify(process.env.SSL),
+      'process.env.DOMAIN': JSON.stringify(process.env.DOMAIN),
+      'process.env.BACKEND_UPSTREAM': JSON.stringify(process.env.BACKEND_UPSTREAM),
     }),
     new MiniCssExtractPlugin({
       filename: 'index.css',
