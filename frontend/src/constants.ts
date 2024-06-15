@@ -11,7 +11,7 @@ export const INDEX_PATH = `${STATIC_PATH}/index.html`;
 
 export const PRELOADED_STATE_KEY = '__PRELOADED_STATE__';
 
-export const SSL = process.env.SSL;
+export const SSL = process.env.SSL === 'true';
 export const DOMAIN = process.env.DOMAIN || 'localhost:9090';
 export const BACKEND_UPSTREAM = process.env.BACKEND_UPSTREAM || 'localhost:9090';
 
