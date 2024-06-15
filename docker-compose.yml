@@ -5,11 +5,11 @@ services:
     build: ./backend
     restart: unless-stopped
     volumes:
-      - "./src:/app/src"
+      - "./backend/src:/app/src"
     ports:
-      - "9090:9090" # Потом прикрыть эти порты наружу
+      # - "9090:9090" # Потом прикрыть эти порты наружу
     env_file:
-      - .env
+      - .env.prod
     depends_on:
       - postgres
     networks:
@@ -23,9 +23,40 @@ services:
     volumes:
       - ./.postgres/data:/var/lib/postgresql/data/
     ports:
-      - "5432:5432" # Потом прикрыть эти порты наружу
+      # - "5432:5432" # Потом прикрыть эти порты наружу
     env_file:
-      - .env
+      - .env.prod
+    networks:
+      - infrastructure
+
+  frontend: 
+    build: .
+    container_name: frontend
+    restart: unless-stopped
+    volumes:
+      - "./frontent/src:/app/src"
+    depends_on:
+      - backend
+    env_file:
+      - .env.prod
+    networks:
+      - infrastructure
+    command: >
+      npm run start
+
+  nginx:
+    image: jonasal/nginx-certbot:latest
+    container_name: nginx
+    restart: unless-stopped
+    env_file:
+      - .env.prod
+    volumes:
+      - .certbot:/etc/letsencrypt
+      - ./frontend/nginx/conf.d:/etc/nginx/user_conf.d
+      - ./frontend/nginx/www:/etc/nginx/www/
+    ports:
+      - "80:80"
+      - "443:443"
     networks:
       - infrastructure
 
