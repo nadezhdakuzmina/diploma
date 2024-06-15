@@ -8,7 +8,7 @@ ARG SSL
 ARG DOMAIN
 ARG BACKEND_UPSTREAM
 
-RUN echo "$SSL . $DOMAIN . $BACKEND_UPSTREAM"g
+RUN echo "$SSL . $DOMAIN . $BACKEND_UPSTREAM"
 
 RUN npm ci
 RUN npm run build:all:prod

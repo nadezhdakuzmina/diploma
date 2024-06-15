@@ -33,9 +33,9 @@ services:
     build:
       context: ./frontend
       args:
-        SSL: ${SSL}
-        DOMAIN: ${DOMAIN}
-        BACKEND_UPSTREAM: ${BACKEND_UPSTREAM}
+        SSL: 'false'
+        DOMAIN: 'my-travel-guide.ru'
+        BACKEND_UPSTREAM: 'backend:9090'
     container_name: frontend
     restart: unless-stopped
     volumes:
