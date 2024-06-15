@@ -29,7 +29,7 @@ services:
     networks:
       - infrastructure
 
-  frontend: 
+  frontend:
     build: ./frontend
     container_name: frontend
     restart: unless-stopped
