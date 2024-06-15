@@ -34,7 +34,7 @@ services:
     container_name: frontend
     restart: unless-stopped
     volumes:
-      - "./frontent/src:/app/src"
+      - "./frontend/src:/app/src"
     depends_on:
       - backend
     env_file:
