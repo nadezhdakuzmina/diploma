@@ -2,11 +2,13 @@ FROM node:16
 
 WORKDIR /app
 
+COPY . .
+
 ARG SSL
 ARG DOMAIN
 ARG BACKEND_UPSTREAM
 
-RUN echo "$SSL . $DOMAIN . $BACKEND_UPSTREAM"
+RUN echo "$SSL . $DOMAIN . $BACKEND_UPSTREAM"g
 
 RUN npm ci
 RUN npm run build:all:prod
