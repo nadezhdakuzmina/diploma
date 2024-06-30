@@ -8,11 +8,10 @@ export const baseMiddlewares = (
   _: Response,
   next: NextFunction
 ) => {
-  const host = req.headers['host'];
   const scheme = IS_DEV ? 'http://' : 'https://';
 
-  req.apiBaseUrl = `${scheme}${host}/api`;
-  req.staticBaseUrl = `${scheme}${host}/static`;
+  req.apiBaseUrl = `${scheme}${DOMAIN}/api`;
+  req.staticBaseUrl = `${scheme}${DOMAIN}/static`;
   req.domainName = DOMAIN;
 
   next();

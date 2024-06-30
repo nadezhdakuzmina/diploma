@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - "./backend/src:/app/src"
+      - "./backend/.static:/app/.static"
     ports:
       # - "9090:9090" # Потом прикрыть эти порты наружу
     env_file:
